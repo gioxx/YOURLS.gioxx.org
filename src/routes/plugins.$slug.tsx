@@ -47,7 +47,7 @@ export const Route = createFileRoute("/plugins/$slug")({
 });
 
 function PluginDetail() {
-  const { plugin } = Route.useLoaderData();
+  const { plugin } = Route.useLoaderData() as { plugin: NonNullable<ReturnType<typeof getPlugin>> };
   const Icon = plugin.icon;
   const related = plugins.filter((p) => p.slug !== plugin.slug).slice(0, 3);
 
