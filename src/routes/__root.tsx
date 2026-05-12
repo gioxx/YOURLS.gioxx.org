@@ -72,14 +72,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Archivio.ext — Plugin per YOURLS" },
+      { name: "description", content: "Estensioni artigianali open-source per YOURLS." },
+      { name: "author", content: "Archivio.ext" },
+      { property: "og:title", content: "Archivio.ext — Plugin per YOURLS" },
+      { property: "og:description", content: "Estensioni artigianali open-source per YOURLS." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
