@@ -1,0 +1,73 @@
+import { Link } from "@tanstack/react-router";
+import { Github } from "lucide-react";
+
+export function SiteNav() {
+  return (
+    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="flex items-center gap-8">
+          <Link to="/" className="font-bold tracking-tighter text-lg uppercase">
+            Archivio.ext
+          </Link>
+          <div className="hidden md:flex gap-6 text-sm font-medium text-muted-foreground">
+            <Link to="/" hash="plugins" className="hover:text-foreground transition-colors">
+              Plugin
+            </Link>
+            <Link to="/about" className="hover:text-foreground transition-colors">
+              About
+            </Link>
+            <a
+              href="https://yourls.org"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-foreground transition-colors"
+            >
+              YOURLS
+            </a>
+          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <span className="hidden sm:inline-block font-mono text-[10px] px-2 py-1 bg-foreground/5 rounded uppercase tracking-wider text-muted-foreground">
+            v1.0 stable
+          </span>
+          <a
+            href="https://github.com/your-username"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+            className="size-8 grid place-items-center rounded-lg ring-1 ring-border hover:bg-foreground/5 transition-colors"
+          >
+            <Github className="size-4" />
+          </a>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+export function SiteFooter() {
+  return (
+    <footer className="border-t border-border bg-card mt-20">
+      <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div className="text-center md:text-left">
+          <p className="text-sm font-bold tracking-tighter uppercase mb-1">Archivio.ext</p>
+          <p className="text-xs text-muted-foreground">
+            Sviluppato con cura per la community open source.
+          </p>
+        </div>
+        <div className="flex gap-8 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+          <a href="https://github.com/your-username" target="_blank" rel="noreferrer" className="hover:text-foreground">
+            GitHub
+          </a>
+          <a href="https://yourls.org" target="_blank" rel="noreferrer" className="hover:text-foreground">
+            YOURLS
+          </a>
+          <Link to="/about" className="hover:text-foreground">
+            Sostieni
+          </Link>
+        </div>
+        <p className="text-[10px] font-mono text-muted-foreground">© {new Date().getFullYear()} ARCHIVIO.EXT</p>
+      </div>
+    </footer>
+  );
+}
