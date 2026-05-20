@@ -6,6 +6,7 @@ import { getAllRepoStats } from "@/lib/github.functions";
 
 
 export const Route = createFileRoute("/")({
+  loader: () => getAllRepoStats(),
   head: () => ({
     meta: [
       { title: "Archivio.ext — Plugin per YOURLS" },
@@ -22,8 +23,14 @@ export const Route = createFileRoute("/")({
       },
     ],
   }),
+  errorComponent: ({ error }) => (
+    <div className="min-h-screen grid place-items-center p-6 text-center">
+      <p className="text-sm text-muted-foreground">{error.message}</p>
+    </div>
+  ),
   component: Index,
 });
+
 
 function Index() {
   return (
