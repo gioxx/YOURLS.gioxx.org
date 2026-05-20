@@ -50,9 +50,23 @@ export const Route = createFileRoute("/plugins/$slug")({
 });
 
 function PluginDetail() {
-  const { plugin } = Route.useLoaderData() as { plugin: NonNullable<ReturnType<typeof getPlugin>> };
+  const { plugin, stats } = Route.useLoaderData() as {
+    plugin: NonNullable<ReturnType<typeof getPlugin>>;
+    stats: import("@/lib/github.functions").RepoStats | null;
+  };
   const Icon = plugin.icon;
   const related = plugins.filter((p) => p.slug !== plugin.slug).slice(0, 3);
+  const version = stats?.version ?? plugin.version;
+  const stars = stats?.stars ?? plugin.stars;
+  const downloadUrl = stats?.downloadUrl ?? plugin.download;
+  const publishedAt = stats?.publishedAt
+    ? new Date(stats.publishedAt).toLocaleDateString("it-IT", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      })
+    : null;
+
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-accent/10 selection:text-accent">
