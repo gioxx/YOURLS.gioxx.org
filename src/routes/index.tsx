@@ -70,8 +70,9 @@ function Index() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {plugins.map((p, i) => (
-              <PluginCard key={p.slug} plugin={p} index={i} />
+              <PluginCard key={p.slug} plugin={p} index={i} stats={statsMap[p.slug]} />
             ))}
+
           </div>
         </section>
       </main>
