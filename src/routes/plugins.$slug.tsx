@@ -102,10 +102,19 @@ function PluginDetail() {
                     : "bg-amber-500/10 text-amber-600"
                 }`}
               >
-                {plugin.status} · v{plugin.version}
+                {plugin.status} · v{version}
               </span>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded uppercase text-muted-foreground border border-border">
+                ★ {stars}
+              </span>
+              {publishedAt && (
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded uppercase text-muted-foreground">
+                  rilasciato {publishedAt}
+                </span>
+              )}
             </div>
           </div>
+
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-balance mb-4 leading-[1.05]">
             {plugin.name}
           </h1>
