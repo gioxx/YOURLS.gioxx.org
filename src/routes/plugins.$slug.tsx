@@ -154,7 +154,7 @@ function PluginDetail() {
                 Repository GitHub
               </a>
               <a
-                href={plugin.download}
+                href={downloadUrl}
                 className="inline-flex items-center gap-2 px-5 py-3 ring-1 ring-border rounded-lg text-sm font-medium hover:bg-card transition-all"
               >
                 <Download className="size-4" />
