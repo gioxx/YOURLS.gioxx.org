@@ -1,8 +1,19 @@
 import { Link } from "@tanstack/react-router";
 import type { Plugin } from "@/data/plugins";
+import type { RepoStats } from "@/lib/github.functions";
 
-export function PluginCard({ plugin, index = 0 }: { plugin: Plugin; index?: number }) {
+export function PluginCard({
+  plugin,
+  index = 0,
+  stats,
+}: {
+  plugin: Plugin;
+  index?: number;
+  stats?: RepoStats | null;
+}) {
   const Icon = plugin.icon;
+  const stars = stats?.stars ?? plugin.stars;
+  const version = stats?.version ?? plugin.version;
   return (
     <Link
       to="/plugins/$slug"
@@ -16,10 +27,13 @@ export function PluginCard({ plugin, index = 0 }: { plugin: Plugin; index?: numb
       <div className="flex justify-between items-start mb-2 gap-3">
         <h3 className="font-bold text-lg leading-tight">{plugin.name}</h3>
         <span className="font-mono text-[11px] text-muted-foreground shrink-0 mt-1">
-          ★ {plugin.stars}
+          ★ {stars}
         </span>
       </div>
-      <p className="text-sm text-muted-foreground mb-6 leading-relaxed flex-1">{plugin.tagline}</p>
+      <p className="text-sm text-muted-foreground mb-3 leading-relaxed flex-1">{plugin.tagline}</p>
+      {version && (
+        <div className="font-mono text-[10px] text-muted-foreground mb-4">v{version}</div>
+      )}
       <div className="flex flex-wrap gap-2 mb-6">
         {plugin.tags.map((tag) => (
           <span

@@ -2,8 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { PluginCard } from "@/components/plugin-card";
 import { plugins } from "@/data/plugins";
+import { getAllRepoStats } from "@/lib/github.functions";
+
 
 export const Route = createFileRoute("/")({
+  loader: () => getAllRepoStats(),
   head: () => ({
     meta: [
       { title: "Archivio.ext — Plugin per YOURLS" },
@@ -20,10 +23,18 @@ export const Route = createFileRoute("/")({
       },
     ],
   }),
+  errorComponent: ({ error }) => (
+    <div className="min-h-screen grid place-items-center p-6 text-center">
+      <p className="text-sm text-muted-foreground">{error.message}</p>
+    </div>
+  ),
   component: Index,
 });
 
+
 function Index() {
+  const statsMap = Route.useLoaderData();
+
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-accent/10 selection:text-accent">
       <SiteNav />
@@ -61,8 +72,9 @@ function Index() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {plugins.map((p, i) => (
-              <PluginCard key={p.slug} plugin={p} index={i} />
+              <PluginCard key={p.slug} plugin={p} index={i} stats={statsMap[p.slug]} />
             ))}
+
           </div>
         </section>
       </main>
