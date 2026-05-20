@@ -2,13 +2,16 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Download, Github } from "lucide-react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { getPlugin, plugins } from "@/data/plugins";
+import { getRepoStats } from "@/lib/github.functions";
 
 export const Route = createFileRoute("/plugins/$slug")({
-  loader: ({ params }) => {
+  loader: async ({ params }) => {
     const plugin = getPlugin(params.slug);
     if (!plugin) throw notFound();
-    return { plugin };
+    const stats = await getRepoStats({ data: { slug: params.slug } });
+    return { plugin, stats };
   },
+
   head: ({ loaderData }) => {
     const p = loaderData?.plugin;
     if (!p) return { meta: [{ title: "Plugin non trovato" }] };
