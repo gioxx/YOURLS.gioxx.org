@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { PluginCard } from "@/components/plugin-card";
 import { plugins } from "@/data/plugins";
+import { getAllRepoStats } from "@/lib/github.functions";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
