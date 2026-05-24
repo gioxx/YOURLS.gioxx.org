@@ -23,6 +23,53 @@ function formatStars(n: number): string {
   return String(n);
 }
 
+type ZipAsset = { browser_download_url: string; name: string; size?: number; content_type?: string };
+
+function normalize(s: string): string {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+/**
+ * Sceglie l'asset .zip più adatto per il download di una release.
+ * Strategia:
+ *  1. Solo asset .zip (esclude .sig/.asc/.sha256/.md5 e archivi sorgente generici)
+ *  2. Punteggio per: match con nome repo/slug, presenza versione/tag, non "source"
+ *  3. A parità di punteggio, preferisci il file più grande (di solito il bundle completo)
+ */
+function pickBestZipAsset(
+  assets: ZipAsset[],
+  repo: string,
+  slug: string,
+  tag?: string,
+): string | null {
+  if (!assets.length) return null;
+  const repoN = normalize(repo);
+  const slugN = normalize(slug);
+  const tagN = tag ? normalize(tag) : "";
+
+  const candidates = assets
+    .filter((a) => {
+      const n = a.name.toLowerCase();
+      if (!n.endsWith(".zip")) return false;
+      // Escludi firme/checksum che potrebbero finire in .zip.* (per sicurezza)
+      if (/\.(sig|asc|sha\d+|md5|txt)$/i.test(a.name)) return false;
+      return true;
+    })
+    .map((a) => {
+      const n = normalize(a.name.replace(/\.zip$/i, ""));
+      let score = 0;
+      if (n.includes(repoN)) score += 5;
+      if (slugN && n.includes(slugN)) score += 3;
+      if (tagN && n.includes(tagN)) score += 2;
+      if (/^source/i.test(a.name) || n === "sourcecode") score -= 4;
+      if (a.content_type === "application/zip") score += 1;
+      return { asset: a, score, size: a.size ?? 0 };
+    })
+    .sort((x, y) => y.score - x.score || y.size - x.size);
+
+  return candidates[0]?.asset.browser_download_url ?? null;
+}
+
 async function ghFetch(path: string, token?: string) {
   return fetch(`https://api.github.com${path}`, {
     headers: {
