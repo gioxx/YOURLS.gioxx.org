@@ -79,18 +79,41 @@ async function fetchOne(slug: string, github: string, token?: string): Promise<R
   }
 }
 
+const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minuti
+type CacheEntry = { value: RepoStats; expiresAt: number };
+const statsCache = new Map<string, CacheEntry>();
+
+async function getCachedStats(slug: string, github: string, token?: string): Promise<RepoStats> {
+  const key = `${slug}:${github}`;
+  const now = Date.now();
+  const cached = statsCache.get(key);
+  if (cached && cached.expiresAt > now && !cached.value.error) {
+    return cached.value;
+  }
+  const fresh = await fetchOne(slug, github, token);
+  if (!fresh.error) {
+    statsCache.set(key, { value: fresh, expiresAt: now + CACHE_TTL_MS });
+    return fresh;
+  }
+  // In caso di errore, restituisci stale se disponibile
+  if (cached) return cached.value;
+  return fresh;
+}
+
 export const getRepoStats = createServerFn({ method: "GET" })
   .inputValidator((data: { slug: string }) => data)
   .handler(async ({ data }): Promise<RepoStats | null> => {
     const plugin = plugins.find((p) => p.slug === data.slug);
     if (!plugin) return null;
-    return fetchOne(plugin.slug, plugin.github, process.env.GITHUB_TOKEN);
+    return getCachedStats(plugin.slug, plugin.github, process.env.GITHUB_TOKEN);
   });
 
 export const getAllRepoStats = createServerFn({ method: "GET" }).handler(async (): Promise<
   Record<string, RepoStats>
 > => {
   const token = process.env.GITHUB_TOKEN;
-  const results = await Promise.all(plugins.map((p) => fetchOne(p.slug, p.github, token)));
+  const results = await Promise.all(
+    plugins.map((p) => getCachedStats(p.slug, p.github, token)),
+  );
   return Object.fromEntries(results.map((r) => [r.slug, r]));
 });
