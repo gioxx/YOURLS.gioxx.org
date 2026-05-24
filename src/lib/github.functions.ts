@@ -67,14 +67,14 @@ async function fetchOne(slug: string, github: string, token?: string): Promise<R
         published_at?: string;
         zipball_url?: string;
         body?: string | null;
-        assets?: Array<{ browser_download_url: string; name: string }>;
+        assets?: Array<{ browser_download_url: string; name: string; size?: number; content_type?: string }>;
       };
       base.version = (data.tag_name ?? data.name ?? "").replace(/^v/, "") || null;
       base.releaseUrl = data.html_url ?? null;
       base.releaseBody = data.body ?? null;
       base.publishedAt = data.published_at ?? null;
-      const zipAsset = data.assets?.find((a) => a.name.toLowerCase().endsWith(".zip"));
-      base.downloadUrl = zipAsset?.browser_download_url ?? data.zipball_url ?? base.downloadUrl;
+      const bestZip = pickBestZipAsset(data.assets ?? [], parsed.repo, slug, data.tag_name);
+      base.downloadUrl = bestZip ?? data.zipball_url ?? base.downloadUrl;
     }
 
     return base;
