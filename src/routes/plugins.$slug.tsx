@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, Download, Github } from "lucide-react";
+import { ArrowLeft, Download, Github, ExternalLink } from "lucide-react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { getPlugin, plugins } from "@/data/plugins";
 import { getRepoStats } from "@/lib/github.functions";
@@ -66,6 +66,8 @@ function PluginDetail() {
         day: "numeric",
       })
     : null;
+  const releaseBody = stats?.releaseBody;
+  const releaseUrl = stats?.releaseUrl;
 
 
   return (
@@ -200,6 +202,35 @@ function PluginDetail() {
             </div>
           </div>
         </div>
+
+        {releaseBody && (
+          <section className="mb-20 animate-fade-in" style={{ animationDelay: "300ms" }}>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="w-8 h-px bg-accent" />
+              <span className="font-mono text-xs uppercase tracking-widest text-accent">
+                Changelog
+              </span>
+            </div>
+            <div className="bg-card ring-1 ring-border rounded-xl p-6 md:p-8">
+              <div className="prose prose-sm max-w-none text-foreground/90 whitespace-pre-wrap leading-relaxed">
+                {releaseBody}
+              </div>
+              {releaseUrl && (
+                <div className="mt-6 pt-6 border-t border-border">
+                  <a
+                    href={releaseUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
+                  >
+                    <ExternalLink className="size-4" />
+                    Apri la release su GitHub
+                  </a>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
 
         <section className="border-t border-border pt-16">
           <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-6">

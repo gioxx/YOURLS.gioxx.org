@@ -6,6 +6,7 @@ export type RepoStats = {
   stars: string | null;
   version: string | null;
   releaseUrl: string | null;
+  releaseBody: string | null;
   downloadUrl: string | null;
   publishedAt: string | null;
   error?: string;
@@ -39,6 +40,7 @@ async function fetchOne(slug: string, github: string, token?: string): Promise<R
     stars: null,
     version: null,
     releaseUrl: null,
+    releaseBody: null,
     downloadUrl: null,
     publishedAt: null,
   };
@@ -64,10 +66,12 @@ async function fetchOne(slug: string, github: string, token?: string): Promise<R
         html_url?: string;
         published_at?: string;
         zipball_url?: string;
+        body?: string | null;
         assets?: Array<{ browser_download_url: string; name: string }>;
       };
       base.version = (data.tag_name ?? data.name ?? "").replace(/^v/, "") || null;
       base.releaseUrl = data.html_url ?? null;
+      base.releaseBody = data.body ?? null;
       base.publishedAt = data.published_at ?? null;
       const zipAsset = data.assets?.find((a) => a.name.toLowerCase().endsWith(".zip"));
       base.downloadUrl = zipAsset?.browser_download_url ?? data.zipball_url ?? base.downloadUrl;
