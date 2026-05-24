@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, Download, Github } from "lucide-react";
+import { ArrowLeft, Download, Github, ExternalLink } from "lucide-react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { getPlugin, plugins } from "@/data/plugins";
 import { getRepoStats } from "@/lib/github.functions";
@@ -66,6 +66,8 @@ function PluginDetail() {
         day: "numeric",
       })
     : null;
+  const releaseBody = stats?.releaseBody;
+  const releaseUrl = stats?.releaseUrl;
 
 
   return (
