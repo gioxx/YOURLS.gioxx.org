@@ -9,6 +9,10 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { ThemeProvider } from "@/lib/theme";
+import { I18nProvider } from "@/lib/i18n";
+
+const themeInitScript = `(function(){try{var t=localStorage.getItem('archivio-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);}catch(e){}})();`;
 
 function NotFoundComponent() {
   return (
@@ -97,6 +101,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <HeadContent />
       </head>
       <body>
@@ -112,7 +117,11 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <I18nProvider>
+        <ThemeProvider>
+          <Outlet />
+        </ThemeProvider>
+      </I18nProvider>
     </QueryClientProvider>
   );
 }
