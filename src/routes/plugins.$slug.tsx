@@ -3,6 +3,7 @@ import { ArrowLeft, Download, Github, ExternalLink } from "lucide-react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { getPlugin, plugins } from "@/data/plugins";
 import { getRepoStats } from "@/lib/github.functions";
+import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/plugins/$slug")({
   loader: async ({ params }) => {
@@ -14,42 +15,54 @@ export const Route = createFileRoute("/plugins/$slug")({
 
   head: ({ loaderData }) => {
     const p = loaderData?.plugin;
-    if (!p) return { meta: [{ title: "Plugin non trovato" }] };
+    if (!p) return { meta: [{ title: "Plugin not found" }] };
+    const tagline = p.tagline.en;
     return {
       meta: [
-        { title: `${p.name} — Plugin YOURLS` },
-        { name: "description", content: p.tagline },
-        { property: "og:title", content: `${p.name} — Plugin YOURLS` },
-        { property: "og:description", content: p.tagline },
+        { title: `${p.name} — YOURLS Plugin` },
+        { name: "description", content: tagline },
+        { property: "og:title", content: `${p.name} — YOURLS Plugin` },
+        { property: "og:description", content: tagline },
       ],
     };
   },
-  notFoundComponent: () => (
-    <div className="min-h-screen bg-background grid place-items-center px-6">
-      <div className="text-center">
-        <h1 className="text-3xl font-bold mb-2">Plugin non trovato</h1>
-        <p className="text-muted-foreground mb-6">Questo plugin non esiste o è stato rimosso.</p>
-        <Link to="/" className="text-accent hover:underline">
-          ← Torna alla home
-        </Link>
-      </div>
-    </div>
-  ),
-  errorComponent: ({ error }) => (
-    <div className="min-h-screen bg-background grid place-items-center px-6">
-      <div className="text-center">
-        <h1 className="text-3xl font-bold mb-2">Errore</h1>
-        <p className="text-muted-foreground mb-6">{error.message}</p>
-        <Link to="/" className="text-accent hover:underline">
-          ← Torna alla home
-        </Link>
-      </div>
-    </div>
-  ),
+  notFoundComponent: () => <NotFoundView />,
+  errorComponent: ({ error }) => <ErrorView message={error.message} />,
   component: PluginDetail,
 });
 
+function NotFoundView() {
+  const { t } = useI18n();
+  return (
+    <div className="min-h-screen bg-background grid place-items-center px-6">
+      <div className="text-center">
+        <h1 className="text-3xl font-bold mb-2">{t.detail.notFoundTitle}</h1>
+        <p className="text-muted-foreground mb-6">{t.detail.notFoundBody}</p>
+        <Link to="/" className="text-accent hover:underline">
+          {t.detail.backHome}
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+function ErrorView({ message }: { message: string }) {
+  const { t } = useI18n();
+  return (
+    <div className="min-h-screen bg-background grid place-items-center px-6">
+      <div className="text-center">
+        <h1 className="text-3xl font-bold mb-2">{t.detail.errorTitle}</h1>
+        <p className="text-muted-foreground mb-6">{message}</p>
+        <Link to="/" className="text-accent hover:underline">
+          {t.detail.backHome}
+        </Link>
+      </div>
+    </div>
+  );
+}
+
 function PluginDetail() {
+  const { lang, locale, t } = useI18n();
   const { plugin, stats } = Route.useLoaderData() as {
     plugin: NonNullable<ReturnType<typeof getPlugin>>;
     stats: import("@/lib/github.functions").RepoStats | null;
@@ -60,7 +73,7 @@ function PluginDetail() {
   const stars = stats?.stars ?? plugin.stars;
   const downloadUrl = stats?.downloadUrl ?? plugin.download;
   const publishedAt = stats?.publishedAt
-    ? new Date(stats.publishedAt).toLocaleDateString("it-IT", {
+    ? new Date(stats.publishedAt).toLocaleDateString(locale, {
         year: "numeric",
         month: "short",
         day: "numeric",
@@ -68,7 +81,6 @@ function PluginDetail() {
     : null;
   const releaseBody = stats?.releaseBody;
   const releaseUrl = stats?.releaseUrl;
-
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-accent/10 selection:text-accent">
@@ -80,7 +92,7 @@ function PluginDetail() {
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12 animate-fade-in"
         >
           <ArrowLeft className="size-4" />
-          Tutti i plugin
+          {t.detail.back}
         </Link>
 
         <header className="mb-16 animate-fade-in">
@@ -111,7 +123,7 @@ function PluginDetail() {
               </span>
               {publishedAt && (
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded uppercase text-muted-foreground">
-                  rilasciato {publishedAt}
+                  {t.detail.releasedOn} {publishedAt}
                 </span>
               )}
             </div>
@@ -121,7 +133,7 @@ function PluginDetail() {
             {plugin.name}
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl text-pretty leading-relaxed">
-            {plugin.tagline}
+            {plugin.tagline[lang]}
           </p>
         </header>
 
@@ -130,14 +142,14 @@ function PluginDetail() {
             <div className="flex items-center gap-3 mb-6">
               <span className="w-8 h-px bg-accent" />
               <span className="font-mono text-xs uppercase tracking-widest text-accent">
-                Panoramica
+                {t.detail.overview}
               </span>
             </div>
-            <p className="text-muted-foreground mb-10 leading-relaxed">{plugin.description}</p>
+            <p className="text-muted-foreground mb-10 leading-relaxed">{plugin.description[lang]}</p>
 
-            <h2 className="font-bold text-lg mb-4">Caratteristiche principali</h2>
+            <h2 className="font-bold text-lg mb-4">{t.detail.features}</h2>
             <ul className="space-y-4 mb-10">
-              {plugin.features.map((f) => (
+              {plugin.features[lang].map((f) => (
                 <li key={f} className="flex gap-3 text-sm">
                   <span className="text-accent mt-1.5">●</span>
                   <span className="text-foreground/90">{f}</span>
@@ -153,14 +165,14 @@ function PluginDetail() {
                 className="inline-flex items-center gap-2 px-5 py-3 bg-foreground text-background rounded-lg text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
               >
                 <Github className="size-4" />
-                Repository GitHub
+                {t.detail.repo}
               </a>
               <a
                 href={downloadUrl}
                 className="inline-flex items-center gap-2 px-5 py-3 ring-1 ring-border rounded-lg text-sm font-medium hover:bg-card transition-all"
               >
                 <Download className="size-4" />
-                Download .zip
+                {t.detail.download}
               </a>
             </div>
           </div>
@@ -172,7 +184,7 @@ function PluginDetail() {
                 <div className="size-2.5 rounded-full bg-amber-500/30" />
                 <div className="size-2.5 rounded-full bg-emerald-500/30" />
                 <span className="ml-4 font-mono text-[10px] text-white/40 uppercase tracking-widest">
-                  Installazione rapida
+                  {t.detail.quickInstall}
                 </span>
               </div>
               <div className="p-6 font-mono text-sm leading-relaxed">
@@ -189,13 +201,13 @@ function PluginDetail() {
             <div className="mt-6 grid grid-cols-2 gap-4">
               <div className="p-4 bg-card ring-1 ring-border rounded-lg">
                 <span className="block font-mono text-[10px] text-muted-foreground uppercase mb-1">
-                  YOURLS minimo
+                  {t.detail.yourlsMin}
                 </span>
                 <span className="font-bold text-sm">{plugin.yourlsMin}</span>
               </div>
               <div className="p-4 bg-card ring-1 ring-border rounded-lg">
                 <span className="block font-mono text-[10px] text-muted-foreground uppercase mb-1">
-                  PHP compat
+                  {t.detail.phpCompat}
                 </span>
                 <span className="font-bold text-sm">{plugin.phpCompat}</span>
               </div>
@@ -208,7 +220,7 @@ function PluginDetail() {
             <div className="flex items-center gap-3 mb-6">
               <span className="w-8 h-px bg-accent" />
               <span className="font-mono text-xs uppercase tracking-widest text-accent">
-                Changelog
+                {t.detail.changelog}
               </span>
             </div>
             <div className="bg-card ring-1 ring-border rounded-xl p-6 md:p-8">
@@ -224,7 +236,7 @@ function PluginDetail() {
                     className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:underline"
                   >
                     <ExternalLink className="size-4" />
-                    Apri la release su GitHub
+                    {t.detail.openRelease}
                   </a>
                 </div>
               )}
@@ -234,7 +246,7 @@ function PluginDetail() {
 
         <section className="border-t border-border pt-16">
           <h2 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-6">
-            Altri plugin
+            {t.detail.others}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {related.map((p) => (
@@ -248,7 +260,7 @@ function PluginDetail() {
                   <p.icon className="size-4 text-accent" />
                   <span className="font-bold text-sm">{p.name}</span>
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">{p.tagline}</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">{p.tagline[lang]}</p>
               </Link>
             ))}
           </div>

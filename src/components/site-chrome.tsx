@@ -1,7 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { Github } from "lucide-react";
+import { ThemeToggle } from "@/lib/theme";
+import { LanguageToggle, useI18n } from "@/lib/i18n";
 
 export function SiteNav() {
+  const { t } = useI18n();
   return (
     <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -11,10 +14,10 @@ export function SiteNav() {
           </Link>
           <div className="hidden md:flex gap-6 text-sm font-medium text-muted-foreground">
             <Link to="/" hash="plugins" className="hover:text-foreground transition-colors">
-              Plugin
+              {t.nav.plugins}
             </Link>
             <Link to="/about" className="hover:text-foreground transition-colors">
-              About
+              {t.nav.about}
             </Link>
             <a
               href="https://yourls.org"
@@ -26,10 +29,9 @@ export function SiteNav() {
             </a>
           </div>
         </div>
-        <div className="flex items-center gap-3">
-          <span className="hidden sm:inline-block font-mono text-[10px] px-2 py-1 bg-foreground/5 rounded uppercase tracking-wider text-muted-foreground">
-            v1.0 stable
-          </span>
+        <div className="flex items-center gap-2">
+          <LanguageToggle />
+          <ThemeToggle />
           <a
             href="https://github.com/gioxx"
             target="_blank"
@@ -46,14 +48,13 @@ export function SiteNav() {
 }
 
 export function SiteFooter() {
+  const { t } = useI18n();
   return (
     <footer className="border-t border-border bg-card mt-20">
       <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="text-center md:text-left">
           <p className="text-sm font-bold tracking-tighter uppercase mb-1">Archivio.ext</p>
-          <p className="text-xs text-muted-foreground">
-            Sviluppato con cura per la community open source.
-          </p>
+          <p className="text-xs text-muted-foreground">{t.footer.tagline}</p>
         </div>
         <div className="flex gap-8 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
           <a href="https://github.com/gioxx" target="_blank" rel="noreferrer" className="hover:text-foreground">
@@ -63,7 +64,7 @@ export function SiteFooter() {
             YOURLS
           </a>
           <Link to="/about" className="hover:text-foreground">
-            Sostieni
+            {t.footer.support}
           </Link>
         </div>
         <p className="text-[10px] font-mono text-muted-foreground">© {new Date().getFullYear()} ARCHIVIO.EXT</p>

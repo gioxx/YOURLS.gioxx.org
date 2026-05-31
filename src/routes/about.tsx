@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { Github, Mail } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -9,12 +10,12 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Lo sviluppatore dietro la collezione di plugin per YOURLS: filosofia, contributi e contatti.",
+          "The developer behind the YOURLS plugin collection: philosophy, contributions and contact.",
       },
       { property: "og:title", content: "About — Archivio.ext" },
       {
         property: "og:description",
-        content: "Lo sviluppatore dietro la collezione di plugin per YOURLS.",
+        content: "The developer behind the YOURLS plugin collection.",
       },
     ],
   }),
@@ -22,6 +23,7 @@ export const Route = createFileRoute("/about")({
 });
 
 function About() {
+  const { t } = useI18n();
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteNav />
@@ -29,33 +31,28 @@ function About() {
         <div className="animate-fade-in">
           <div className="flex items-center gap-3 mb-6">
             <span className="w-8 h-px bg-accent" />
-            <span className="font-mono text-xs uppercase tracking-widest text-accent">About</span>
+            <span className="font-mono text-xs uppercase tracking-widest text-accent">
+              {t.about.eyebrow}
+            </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-8 text-balance leading-[1.05]">
-            Plugin pensati come strumenti, non come prodotti.
+            {t.about.title}
           </h1>
           <div className="space-y-6 text-muted-foreground leading-relaxed text-lg">
             <p>
-              Archivio.ext è la vetrina personale di una serie di plugin sviluppati per{" "}
+              {t.about.p1Pre}
               <a
                 href="https://yourls.org"
                 target="_blank"
                 rel="noreferrer"
                 className="text-foreground underline decoration-accent/40 hover:decoration-accent"
               >
-                YOURLS
+                {t.about.p1Mid}
               </a>
-              , il celebre URL shortener self-hosted in PHP. Ogni plugin nasce da un problema reale,
-              risolto nel modo più semplice e robusto possibile.
+              {t.about.p1Post}
             </p>
-            <p>
-              Niente dipendenze pesanti, niente codice copiato da Stack Overflow senza capirlo.
-              Tutto il codice è open-source, rilasciato sotto licenza MIT, e ospitato su GitHub.
-            </p>
-            <p>
-              Se uno di questi plugin ti è utile, lascia una stella sul repository o apri una issue
-              con feedback. Le pull request sono sempre benvenute.
-            </p>
+            <p>{t.about.p2}</p>
+            <p>{t.about.p3}</p>
           </div>
           <div className="flex flex-wrap gap-3 mt-12">
             <a
@@ -65,14 +62,14 @@ function About() {
               className="inline-flex items-center gap-2 px-5 py-3 bg-foreground text-background rounded-lg text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
             >
               <Github className="size-4" />
-              GitHub
+              {t.about.github}
             </a>
             <a
               href="mailto:hello@example.com"
               className="inline-flex items-center gap-2 px-5 py-3 ring-1 ring-border rounded-lg text-sm font-medium hover:bg-card transition-all"
             >
               <Mail className="size-4" />
-              Contatti
+              {t.about.contact}
             </a>
           </div>
         </div>
