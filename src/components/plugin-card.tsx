@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import type { Plugin } from "@/data/plugins";
 import type { RepoStats } from "@/lib/github.functions";
+import { useI18n } from "@/lib/i18n";
 
 export function PluginCard({
   plugin,
@@ -11,6 +12,7 @@ export function PluginCard({
   index?: number;
   stats?: RepoStats | null;
 }) {
+  const { lang, t } = useI18n();
   const Icon = plugin.icon;
   const stars = stats?.stars ?? plugin.stars;
   const version = stats?.version ?? plugin.version;
@@ -30,7 +32,9 @@ export function PluginCard({
           ★ {stars}
         </span>
       </div>
-      <p className="text-sm text-muted-foreground mb-3 leading-relaxed flex-1">{plugin.tagline}</p>
+      <p className="text-sm text-muted-foreground mb-3 leading-relaxed flex-1">
+        {plugin.tagline[lang]}
+      </p>
       {version && (
         <div className="font-mono text-[10px] text-muted-foreground mb-4">v{version}</div>
       )}
@@ -45,7 +49,7 @@ export function PluginCard({
         ))}
       </div>
       <div className="w-full py-2.5 rounded-lg bg-foreground text-background text-sm font-medium text-center group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
-        Esplora dettagli
+        {t.card.explore}
       </div>
     </Link>
   );
