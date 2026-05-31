@@ -59,7 +59,7 @@ function About() {
           </div>
           <div className="flex flex-wrap gap-3 mt-12">
             <a
-              href="https://github.com/your-username"
+              href="https://github.com/gioxx"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 px-5 py-3 bg-foreground text-background rounded-lg text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
