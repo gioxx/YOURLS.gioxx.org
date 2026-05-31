@@ -31,7 +31,7 @@ export function SiteNav() {
             v1.0 stable
           </span>
           <a
-            href="https://github.com/your-username"
+            href="https://github.com/gioxx"
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
@@ -56,7 +56,7 @@ export function SiteFooter() {
           </p>
         </div>
         <div className="flex gap-8 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-          <a href="https://github.com/your-username" target="_blank" rel="noreferrer" className="hover:text-foreground">
+          <a href="https://github.com/gioxx" target="_blank" rel="noreferrer" className="hover:text-foreground">
             GitHub
           </a>
           <a href="https://yourls.org" target="_blank" rel="noreferrer" className="hover:text-foreground">

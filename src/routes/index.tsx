@@ -62,7 +62,7 @@ function Index() {
               Plugin disponibili · {plugins.length}
             </h2>
             <a
-              href="https://github.com/your-username"
+              href="https://github.com/gioxx"
               target="_blank"
               rel="noreferrer"
               className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
