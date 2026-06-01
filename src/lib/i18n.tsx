@@ -63,6 +63,8 @@ const dicts: Record<Lang, Dict> = {
       availableCount: (n) => `Available plugins · ${n}`,
       allRepos: "All repositories →",
       explore: "Explore details",
+      collateralTitle: "Side projects",
+      collateralSubtitle: "Utilities and tooling around the YOURLS ecosystem.",
     },
     card: { explore: "Explore details" },
     detail: {
