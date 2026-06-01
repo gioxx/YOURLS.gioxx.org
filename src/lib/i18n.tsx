@@ -44,7 +44,7 @@ type Dict = {
     github: string;
     contact: string;
   };
-  footer: { tagline: string; support: string };
+  footer: { tagline: string; support: string; disclaimer: string };
   theme: { label: string; light: string; dark: string; system: string };
   language: { label: string };
 };
