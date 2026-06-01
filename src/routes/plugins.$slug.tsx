@@ -1,5 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Download, Github, ExternalLink } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { getPlugin, plugins } from "@/data/plugins";
 import { getRepoStats } from "@/lib/github.functions";
@@ -224,9 +226,26 @@ function PluginDetail() {
               </span>
             </div>
             <div className="bg-card ring-1 ring-border rounded-xl p-6 md:p-8">
-              <div className="prose prose-sm max-w-none text-foreground/90 whitespace-pre-wrap leading-relaxed">
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  h1: ({ children }) => <h1 className="text-xl font-bold mb-3 mt-5 first:mt-0">{children}</h1>,
+                  h2: ({ children }) => <h2 className="text-lg font-bold mb-2 mt-4 first:mt-0">{children}</h2>,
+                  h3: ({ children }) => <h3 className="text-base font-semibold mb-2 mt-3 first:mt-0">{children}</h3>,
+                  p: ({ children }) => <p className="text-sm text-foreground/90 leading-relaxed mb-3 last:mb-0">{children}</p>,
+                  ul: ({ children }) => <ul className="list-disc pl-5 mb-3 space-y-1">{children}</ul>,
+                  ol: ({ children }) => <ol className="list-decimal pl-5 mb-3 space-y-1">{children}</ol>,
+                  li: ({ children }) => <li className="text-sm text-foreground/90 leading-relaxed">{children}</li>,
+                  pre: ({ children }) => <pre className="bg-[var(--code-bg)] text-white/80 rounded-lg p-4 overflow-x-auto mb-3 font-mono text-xs">{children}</pre>,
+                  code: ({ children }) => <code className="bg-muted rounded px-1.5 py-0.5 text-xs font-mono text-accent">{children}</code>,
+                  hr: () => <hr className="border-border my-4" />,
+                  strong: ({ children }) => <strong className="font-semibold text-foreground">{children}</strong>,
+                  a: ({ href, children }) => <a href={href} target="_blank" rel="noreferrer" className="text-accent hover:underline">{children}</a>,
+                  blockquote: ({ children }) => <blockquote className="border-l-2 border-accent/40 pl-4 italic text-muted-foreground mb-3">{children}</blockquote>,
+                }}
+              >
                 {releaseBody}
-              </div>
+              </ReactMarkdown>
               {releaseUrl && (
                 <div className="mt-6 pt-6 border-t border-border">
                   <a

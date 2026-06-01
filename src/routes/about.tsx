@@ -6,13 +6,13 @@ import { useI18n } from "@/lib/i18n";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Archivio.ext" },
+      { title: "About — YOURLS.ext" },
       {
         name: "description",
         content:
           "The developer behind the YOURLS plugin collection: philosophy, contributions and contact.",
       },
-      { property: "og:title", content: "About — Archivio.ext" },
+      { property: "og:title", content: "About — YOURLS.ext" },
       {
         property: "og:description",
         content: "The developer behind the YOURLS plugin collection.",

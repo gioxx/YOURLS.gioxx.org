@@ -10,7 +10,7 @@ export function SiteNav() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-8">
           <Link to="/" className="font-bold tracking-tighter text-lg uppercase">
-            Archivio.ext
+            YOURLS.ext
           </Link>
           <div className="hidden md:flex gap-6 text-sm font-medium text-muted-foreground">
             <Link to="/" hash="plugins" className="hover:text-foreground transition-colors">
@@ -25,7 +25,7 @@ export function SiteNav() {
               rel="noreferrer"
               className="hover:text-foreground transition-colors"
             >
-              YOURLS
+              Download YOURLS
             </a>
           </div>
         </div>
@@ -51,26 +51,26 @@ export function SiteFooter() {
   const { t } = useI18n();
   return (
     <footer className="border-t border-border bg-card mt-20">
-      <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="text-center md:text-left">
-          <p className="text-sm font-bold tracking-tighter uppercase mb-1">Archivio.ext</p>
-          <p className="text-xs text-muted-foreground">{t.footer.tagline}</p>
+      <div className="max-w-6xl mx-auto px-6 py-10">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
+          <div>
+            <p className="text-sm font-bold tracking-tighter uppercase mb-1">YOURLS.ext</p>
+            <p className="text-xs text-muted-foreground">{t.footer.tagline}</p>
+          </div>
+          <div className="flex gap-8 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+            <a href="https://github.com/gioxx" target="_blank" rel="noreferrer" className="hover:text-foreground">
+              GitHub
+            </a>
+            <a href="https://yourls.org" target="_blank" rel="noreferrer" className="hover:text-foreground">
+              Download YOURLS
+            </a>
+            <Link to="/about" className="hover:text-foreground">
+              {t.footer.support}
+            </Link>
+          </div>
         </div>
-        <div className="flex gap-8 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-          <a href="https://github.com/gioxx" target="_blank" rel="noreferrer" className="hover:text-foreground">
-            GitHub
-          </a>
-          <a href="https://yourls.org" target="_blank" rel="noreferrer" className="hover:text-foreground">
-            YOURLS
-          </a>
-          <Link to="/about" className="hover:text-foreground">
-            {t.footer.support}
-          </Link>
-        </div>
-        <p className="text-[10px] font-mono text-muted-foreground">© {new Date().getFullYear()} ARCHIVIO.EXT</p>
-      </div>
-      <div className="border-t border-border">
-        <div className="max-w-4xl mx-auto px-6 py-6 text-left">
+        <div className="border-t border-border pt-6">
+          <p className="text-[10px] font-mono text-muted-foreground mb-3">© {new Date().getFullYear()} YOURLS.EXT</p>
           <p className="text-[10px] leading-relaxed text-muted-foreground/70">
             {t.footer.disclaimer}
           </p>

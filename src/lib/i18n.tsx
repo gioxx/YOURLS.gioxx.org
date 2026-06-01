@@ -88,7 +88,7 @@ const dicts: Record<Lang, Dict> = {
     about: {
       eyebrow: "About",
       title: "Plugins meant as tools, not products.",
-      p1Pre: "Archivio.ext is the personal showcase of a set of plugins built for ",
+      p1Pre: "YOURLS.ext is my personal gallery of plugins and side projects built for ",
       p1Mid: "YOURLS",
       p1Post:
         ", the well-known self-hosted PHP URL shortener. Every plugin is born from a real problem, solved in the simplest and most robust way possible.",
@@ -142,7 +142,7 @@ const dicts: Record<Lang, Dict> = {
     about: {
       eyebrow: "About",
       title: "Plugin pensati come strumenti, non come prodotti.",
-      p1Pre: "Archivio.ext è la vetrina personale di una serie di plugin sviluppati per ",
+      p1Pre: "YOURLS.ext è la mia galleria personale di plugin e progetti collaterali sviluppati per ",
       p1Mid: "YOURLS",
       p1Post:
         ", il celebre URL shortener self-hosted in PHP. Ogni plugin nasce da un problema reale, risolto nel modo più semplice e robusto possibile.",
