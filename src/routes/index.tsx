@@ -79,6 +79,60 @@ function Index() {
 
           </div>
         </section>
+
+        <section className="mt-24 pt-16 border-t border-border">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="w-8 h-px bg-accent" />
+            <span className="font-mono text-xs uppercase tracking-widest text-accent">
+              {t.home.collateralTitle}
+            </span>
+          </div>
+          <p className="text-muted-foreground mb-8 max-w-2xl">
+            {t.home.collateralSubtitle}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <a
+              href="https://github.com/gioxx/YOURLS-diff"
+              target="_blank"
+              rel="noreferrer"
+              className="group bg-card ring-1 ring-border rounded-xl p-6 hover:ring-accent/40 hover:-translate-y-0.5 transition-all duration-300 flex flex-col"
+            >
+              <div className="size-10 bg-accent/5 rounded-lg flex items-center justify-center mb-6 ring-1 ring-accent/10 text-accent">
+                <GitCompare className="size-5" />
+              </div>
+              <h3 className="font-bold text-lg leading-tight mb-2">YOURLS-diff</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-6">
+                {lang === "it"
+                  ? "Confronta velocemente file e directory tra istanze YOURLS per identificare differenze in configurazioni e codice personalizzato."
+                  : "Quickly compare files and directories across YOURLS instances to spot differences in configurations and custom code."}
+              </p>
+              <div className="inline-flex items-center gap-2 text-sm font-medium text-accent">
+                <ExternalLink className="size-4" />
+                {lang === "it" ? "Apri su GitHub" : "Open on GitHub"}
+              </div>
+            </a>
+            <a
+              href="https://github.com/gioxx/YOURLS-DockerCustom"
+              target="_blank"
+              rel="noreferrer"
+              className="group bg-card ring-1 ring-border rounded-xl p-6 hover:ring-accent/40 hover:-translate-y-0.5 transition-all duration-300 flex flex-col"
+            >
+              <div className="size-10 bg-accent/5 rounded-lg flex items-center justify-center mb-6 ring-1 ring-accent/10 text-accent">
+                <Container className="size-5" />
+              </div>
+              <h3 className="font-bold text-lg leading-tight mb-2">YOURLS-DockerCustom</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-6">
+                {lang === "it"
+                  ? "Container Docker personalizzato per YOURLS con configurazioni ottimizzate per ambienti di sviluppo e produzione."
+                  : "Custom Docker container for YOURLS with optimized configurations for development and production environments."}
+              </p>
+              <div className="inline-flex items-center gap-2 text-sm font-medium text-accent">
+                <ExternalLink className="size-4" />
+                {lang === "it" ? "Apri su GitHub" : "Open on GitHub"}
+              </div>
+            </a>
+          </div>
+        </section>
       </main>
 
       <SiteFooter />
