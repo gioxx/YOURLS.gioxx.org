@@ -44,7 +44,7 @@ type Dict = {
     github: string;
     contact: string;
   };
-  footer: { tagline: string; support: string };
+  footer: { tagline: string; support: string; disclaimer: string };
   theme: { label: string; light: string; dark: string; system: string };
   language: { label: string };
 };
@@ -96,6 +96,8 @@ const dicts: Record<Lang, Dict> = {
     footer: {
       tagline: "Crafted with care for the open-source community.",
       support: "Support",
+      disclaimer:
+        "All trademarks mentioned are the property of their respective owners. Third-party trademarks, product names, trade names, corporate names and companies mentioned may be trademarks of their respective owners or registered trademarks of other companies and have been used for explanatory purposes only and for the benefit of the owner, without any intent to infringe existing copyright.",
     },
     theme: { label: "Theme", light: "Light", dark: "Dark", system: "System" },
     language: { label: "Language" },
@@ -146,6 +148,8 @@ const dicts: Record<Lang, Dict> = {
     footer: {
       tagline: "Sviluppato con cura per la community open source.",
       support: "Sostieni",
+      disclaimer:
+        "Tutti i marchi citati appartengono ai legittimi proprietari; marchi di terzi, nomi di prodotti, nomi commerciali, nomi corporativi e società citati possono essere marchi di proprietà dei rispettivi titolari o marchi registrati d'altre società e sono stati utilizzati a puro scopo esplicativo ed a beneficio del possessore, senza alcun fine di violazione dei diritti di Copyright vigenti.",
     },
     theme: { label: "Tema", light: "Chiaro", dark: "Scuro", system: "Sistema" },
     language: { label: "Lingua" },
