@@ -70,7 +70,7 @@ export function SiteFooter() {
         <p className="text-[10px] font-mono text-muted-foreground">© {new Date().getFullYear()} ARCHIVIO.EXT</p>
       </div>
       <div className="border-t border-border">
-        <div className="max-w-4xl mx-auto px-6 py-6 text-center">
+        <div className="max-w-4xl mx-auto px-6 py-6 text-left">
           <p className="text-[10px] leading-relaxed text-muted-foreground/70">
             {t.footer.disclaimer}
           </p>
