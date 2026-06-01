@@ -10,7 +10,7 @@ export function SiteNav() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-8">
           <Link to="/" className="font-bold tracking-tighter text-lg uppercase">
-            YOURLS Plugins
+            Archivio.ext
           </Link>
           <div className="hidden md:flex gap-6 text-sm font-medium text-muted-foreground">
             <Link to="/" hash="plugins" className="hover:text-foreground transition-colors">
@@ -53,7 +53,7 @@ export function SiteFooter() {
     <footer className="border-t border-border bg-card mt-20">
       <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="text-center md:text-left">
-          <p className="text-sm font-bold tracking-tighter uppercase mb-1">YOURLS Plugins</p>
+          <p className="text-sm font-bold tracking-tighter uppercase mb-1">Archivio.ext</p>
           <p className="text-xs text-muted-foreground">{t.footer.tagline}</p>
         </div>
         <div className="flex gap-8 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
@@ -67,7 +67,7 @@ export function SiteFooter() {
             {t.footer.support}
           </Link>
         </div>
-        <p className="text-[10px] font-mono text-muted-foreground">© {new Date().getFullYear()} YOURLS.gioxx.org</p>
+        <p className="text-[10px] font-mono text-muted-foreground">© {new Date().getFullYear()} ARCHIVIO.EXT</p>
       </div>
       <div className="border-t border-border">
         <div className="max-w-4xl mx-auto px-6 py-6 text-left">
