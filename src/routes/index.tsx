@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { GitCompare, Container, ExternalLink } from "lucide-react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { PluginCard } from "@/components/plugin-card";
 import { plugins } from "@/data/plugins";
