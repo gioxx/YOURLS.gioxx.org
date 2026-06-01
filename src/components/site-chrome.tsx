@@ -10,7 +10,7 @@ export function SiteNav() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-8">
           <Link to="/" className="font-bold tracking-tighter text-lg uppercase">
-            YOURLS.ext
+            gioxx/YOURLS
           </Link>
           <div className="hidden md:flex gap-6 text-sm font-medium text-muted-foreground">
             <Link to="/" hash="plugins" className="hover:text-foreground transition-colors">
@@ -54,7 +54,7 @@ export function SiteFooter() {
       <div className="max-w-6xl mx-auto px-6 py-10">
         <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
           <div>
-            <p className="text-sm font-bold tracking-tighter uppercase mb-1">YOURLS.ext</p>
+            <p className="text-sm font-bold tracking-tighter uppercase mb-1">gioxx/YOURLS</p>
             <p className="text-xs text-muted-foreground">{t.footer.tagline}</p>
           </div>
           <div className="flex gap-8 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
@@ -70,7 +70,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="border-t border-border pt-6">
-          <p className="text-[10px] font-mono text-muted-foreground mb-3">© {new Date().getFullYear()} YOURLS.EXT</p>
+          <p className="text-[10px] font-mono text-muted-foreground mb-3">© {new Date().getFullYear()} GIOXX/YOURLS</p>
           <p className="text-[10px] leading-relaxed text-muted-foreground/70">
             {t.footer.disclaimer}
           </p>

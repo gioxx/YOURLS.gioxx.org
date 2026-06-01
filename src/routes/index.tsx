@@ -11,13 +11,13 @@ export const Route = createFileRoute("/")({
   loader: () => getAllRepoStats(),
   head: () => ({
     meta: [
-      { title: "YOURLS.ext — My personal YOURLS Plugin Gallery" },
+      { title: "gioxx/YOURLS — My personal YOURLS Plugin Gallery" },
       {
         name: "description",
         content:
           "A curated collection of open-source YOURLS plugins: security, advanced analytics, performance and integrations.",
       },
-      { property: "og:title", content: "YOURLS.ext — My personal YOURLS Plugin Gallery" },
+      { property: "og:title", content: "gioxx/YOURLS — My personal YOURLS Plugin Gallery" },
       {
         property: "og:description",
         content:

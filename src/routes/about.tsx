@@ -1,18 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
-import { Github, Mail } from "lucide-react";
+import { Github, ExternalLink } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — YOURLS.ext" },
+      { title: "About — gioxx/YOURLS" },
       {
         name: "description",
         content:
           "The developer behind the YOURLS plugin collection: philosophy, contributions and contact.",
       },
-      { property: "og:title", content: "About — YOURLS.ext" },
+      { property: "og:title", content: "About — gioxx/YOURLS" },
       {
         property: "og:description",
         content: "The developer behind the YOURLS plugin collection.",
@@ -54,23 +54,30 @@ function About() {
             <p>{t.about.p2}</p>
             <p>{t.about.p3}</p>
           </div>
-          <div className="flex flex-wrap gap-3 mt-12">
-            <a
-              href="https://github.com/gioxx"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 bg-foreground text-background rounded-lg text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
-            >
-              <Github className="size-4" />
-              {t.about.github}
-            </a>
-            <a
-              href="mailto:hello@example.com"
-              className="inline-flex items-center gap-2 px-5 py-3 ring-1 ring-border rounded-lg text-sm font-medium hover:bg-card transition-all"
-            >
-              <Mail className="size-4" />
-              {t.about.contact}
-            </a>
+          <div className="mt-12 space-y-6">
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="https://github.com/gioxx"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 bg-foreground text-background rounded-lg text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
+              >
+                <Github className="size-4" />
+                {t.about.github}
+              </a>
+              <a
+                href="https://gioxx.org/about/#giovanni_contattami"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 ring-1 ring-border rounded-lg text-sm font-medium hover:bg-card transition-all"
+              >
+                <ExternalLink className="size-4" />
+                {t.about.contact}
+              </a>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-xl">
+              {t.about.contactNote}
+            </p>
           </div>
         </div>
       </main>

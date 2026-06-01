@@ -45,6 +45,7 @@ type Dict = {
     p3: string;
     github: string;
     contact: string;
+    contactNote: string;
   };
   footer: { tagline: string; support: string; disclaimer: string };
   theme: { label: string; light: string; dark: string; system: string };
@@ -88,14 +89,15 @@ const dicts: Record<Lang, Dict> = {
     about: {
       eyebrow: "About",
       title: "Plugins meant as tools, not products.",
-      p1Pre: "YOURLS.ext is my personal gallery of plugins and side projects built for ",
+      p1Pre: "gioxx/YOURLS is my personal gallery of plugins and side projects built for ",
       p1Mid: "YOURLS",
       p1Post:
         ", the well-known self-hosted PHP URL shortener. Every plugin is born from a real problem, solved in the simplest and most robust way possible.",
       p2: "No heavy dependencies, no code blindly copied from Stack Overflow. All code is open-source, released under the MIT license, and hosted on GitHub.",
       p3: "If one of these plugins is useful to you, leave a star on the repository or open an issue with feedback. Pull requests are always welcome.",
       github: "GitHub",
-      contact: "Contact",
+      contact: "Contact form",
+      contactNote: "For support or questions about a specific plugin, open an issue directly on its GitHub repository. As a last resort, you can reach me via my contact form.",
     },
     footer: {
       tagline: "Crafted with care for the open-source community.",
@@ -142,14 +144,15 @@ const dicts: Record<Lang, Dict> = {
     about: {
       eyebrow: "About",
       title: "Plugin pensati come strumenti, non come prodotti.",
-      p1Pre: "YOURLS.ext è la mia galleria personale di plugin e progetti collaterali sviluppati per ",
+      p1Pre: "gioxx/YOURLS è la mia galleria personale di plugin e progetti collaterali sviluppati per ",
       p1Mid: "YOURLS",
       p1Post:
         ", il celebre URL shortener self-hosted in PHP. Ogni plugin nasce da un problema reale, risolto nel modo più semplice e robusto possibile.",
       p2: "Niente dipendenze pesanti, niente codice copiato da Stack Overflow senza capirlo. Tutto il codice è open-source, rilasciato sotto licenza MIT, e ospitato su GitHub.",
       p3: "Se uno di questi plugin ti è utile, lascia una stella sul repository o apri una issue con feedback. Le pull request sono sempre benvenute.",
       github: "GitHub",
-      contact: "Contatti",
+      contact: "Modulo di contatto",
+      contactNote: "Per supporto o domande su uno specifico plugin, apri una Issue direttamente nel suo repository GitHub. In ultima istanza, puoi contattarmi tramite il mio modulo di contatto.",
     },
     footer: {
       tagline: "Sviluppato con cura per la community open source.",
