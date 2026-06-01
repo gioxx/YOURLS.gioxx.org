@@ -13,6 +13,8 @@ type Dict = {
     availableCount: (n: number) => string;
     allRepos: string;
     explore: string;
+    collateralTitle: string;
+    collateralSubtitle: string;
   };
   card: { explore: string };
   detail: {
