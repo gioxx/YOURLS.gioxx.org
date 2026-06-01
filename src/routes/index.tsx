@@ -36,7 +36,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const statsMap = Route.useLoaderData();
-  const { t } = useI18n();
+  const { lang, t } = useI18n();
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-accent/10 selection:text-accent">
