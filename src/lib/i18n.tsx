@@ -13,6 +13,8 @@ type Dict = {
     availableCount: (n: number) => string;
     allRepos: string;
     explore: string;
+    collateralTitle: string;
+    collateralSubtitle: string;
   };
   card: { explore: string };
   detail: {
@@ -61,6 +63,8 @@ const dicts: Record<Lang, Dict> = {
       availableCount: (n) => `Available plugins · ${n}`,
       allRepos: "All repositories →",
       explore: "Explore details",
+      collateralTitle: "Side projects",
+      collateralSubtitle: "Utilities and tooling around the YOURLS ecosystem.",
     },
     card: { explore: "Explore details" },
     detail: {
@@ -113,6 +117,8 @@ const dicts: Record<Lang, Dict> = {
       availableCount: (n) => `Plugin disponibili · ${n}`,
       allRepos: "Tutti i repository →",
       explore: "Esplora dettagli",
+      collateralTitle: "Progetti collaterali",
+      collateralSubtitle: "Utilità e strumenti attorno all'ecosistema YOURLS.",
     },
     card: { explore: "Esplora dettagli" },
     detail: {
