@@ -69,6 +69,9 @@ export function SiteFooter() {
             <a href="https://github.com/gioxx" target="_blank" rel="noreferrer" className="hover:text-foreground">
               GitHub
             </a>
+            <Link to="/" hash="plugins" className="hover:text-foreground">
+              {t.nav.plugins}
+            </Link>
             <Link to="/" hash="collateral" className="hover:text-foreground">
               {t.nav.collateral}
             </Link>
