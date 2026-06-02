@@ -13,18 +13,21 @@ export const Route = createFileRoute("/plugins/$slug")({
     const plugin = getPlugin(params.slug);
     if (!plugin) throw notFound();
     const stats = await getRepoStats({ data: { slug: params.slug } });
-    return { plugin, stats };
+    // Return only serializable data — plugin.icon is a React component (function)
+    // and cannot survive SSR serialization. The component re-hydrates it from
+    // the local plugins array using the slug.
+    return { slug: params.slug, stats };
   },
 
   head: ({ loaderData }) => {
-    const p = loaderData?.plugin;
-    if (!p) return { meta: [{ title: "Plugin not found" }] };
-    const tagline = p.tagline.en;
+    const plugin = loaderData?.slug ? getPlugin(loaderData.slug) : null;
+    if (!plugin) return { meta: [{ title: "Plugin not found" }] };
+    const tagline = plugin.tagline.en;
     return {
       meta: [
-        { title: `${p.name} — YOURLS Plugin` },
+        { title: `${plugin.name} — YOURLS Plugin` },
         { name: "description", content: tagline },
-        { property: "og:title", content: `${p.name} — YOURLS Plugin` },
+        { property: "og:title", content: `${plugin.name} — YOURLS Plugin` },
         { property: "og:description", content: tagline },
       ],
     };
@@ -66,10 +69,11 @@ function ErrorView({ message }: { message: string }) {
 
 function PluginDetail() {
   const { lang, locale, t } = useI18n();
-  const { plugin, stats } = Route.useLoaderData() as {
-    plugin: NonNullable<ReturnType<typeof getPlugin>>;
+  const { slug, stats } = Route.useLoaderData() as {
+    slug: string;
     stats: import("@/lib/github.functions").RepoStats | null;
   };
+  const plugin = getPlugin(slug)!;
   const Icon = plugin.icon;
   const related = plugins.filter((p) => p.slug !== plugin.slug).slice(0, 3);
   const version = stats?.version ?? plugin.version;
