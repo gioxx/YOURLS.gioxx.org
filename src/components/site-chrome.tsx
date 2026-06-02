@@ -23,6 +23,9 @@ export function SiteNav() {
             <Link to="/about" className="hover:text-foreground transition-colors">
               {t.nav.about}
             </Link>
+            <Link to="/support" className="hover:text-foreground transition-colors">
+              {t.footer.support}
+            </Link>
             <span className="w-px h-3.5 bg-border" />
             <a
               href="https://yourls.org"

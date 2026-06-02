@@ -80,7 +80,7 @@ function Support() {
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed mb-16 max-w-xl">
             {lang === "it"
-              ? "Tutti i plugin sono gratuiti e open-source. Se uno di essi ti è stato utile e vuoi supportare il lavoro dietro, ecco i modi per farlo."
+              ? "Tutti i plugin sono gratuiti e open-source. Se uno di essi ti è stato utile e vuoi supportare il lavoro che c'è dietro, ecco i modi per farlo."
               : "All plugins are free and open-source. If any of them saved you time or solved a real problem, here are the ways to show your appreciation."}
           </p>
 
