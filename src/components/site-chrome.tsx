@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Github } from "lucide-react";
+import { GithubIcon } from "@/components/github-icon";
 import { ThemeToggle } from "@/lib/theme";
 import { LanguageToggle, useI18n } from "@/lib/i18n";
 
@@ -39,7 +39,7 @@ export function SiteNav() {
             aria-label="GitHub"
             className="size-8 grid place-items-center rounded-lg ring-1 ring-border hover:bg-foreground/5 transition-colors"
           >
-            <Github className="size-4" />
+            <GithubIcon className="size-4" />
           </a>
         </div>
       </div>

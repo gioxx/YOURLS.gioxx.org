@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, Download, Github, ExternalLink } from "lucide-react";
+import { ArrowLeft, Download, ExternalLink } from "lucide-react";
+import { GithubIcon } from "@/components/github-icon";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
@@ -166,7 +167,7 @@ function PluginDetail() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3 bg-foreground text-background rounded-lg text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
               >
-                <Github className="size-4" />
+                <GithubIcon className="size-4" />
                 {t.detail.repo}
               </a>
               <a
