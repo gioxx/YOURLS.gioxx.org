@@ -69,7 +69,7 @@ export function SiteFooter() {
             <Link to="/" hash="collateral" className="hover:text-foreground">
               {t.nav.collateral}
             </Link>
-            <Link to="/about" className="hover:text-foreground">
+            <Link to="/support" className="hover:text-foreground">
               {t.footer.support}
             </Link>
             <span className="w-px h-3 bg-border/60" />
