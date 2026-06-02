@@ -9,7 +9,8 @@ export function SiteNav() {
     <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-8">
-          <Link to="/" className="font-bold tracking-tighter text-lg uppercase">
+          <Link to="/" className="flex items-center gap-2 font-bold tracking-tighter text-lg uppercase">
+            <img src="/favicon.svg" alt="" className="size-5 shrink-0" />
             gioxx/YOURLS
           </Link>
           <div className="hidden md:flex gap-6 text-sm font-medium text-muted-foreground">

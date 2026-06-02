@@ -93,7 +93,7 @@ const dicts: Record<Lang, Dict> = {
       p1Mid: "YOURLS",
       p1Post:
         ", the well-known self-hosted PHP URL shortener. Every plugin is born from a real problem, solved in the simplest and most robust way possible.",
-      p2: "No heavy dependencies, no code blindly copied from Stack Overflow. All code is open-source, released under the MIT license, and hosted on GitHub.",
+      p2: "All code is open-source, released under MIT license and hosted on GitHub. Helped by AI? Yes, but never on autopilot, with the goal of improving productivity and code quality. If this bothers you, feel free to look away, there's nothing shameful in using tools that help you do a better and more efficient job.",
       p3: "If one of these plugins is useful to you, leave a star on the repository or open an issue with feedback. Pull requests are always welcome.",
       github: "GitHub",
       contact: "Contact form",
@@ -148,7 +148,7 @@ const dicts: Record<Lang, Dict> = {
       p1Mid: "YOURLS",
       p1Post:
         ", il celebre URL shortener self-hosted in PHP. Ogni plugin nasce da un problema reale, risolto nel modo più semplice e robusto possibile.",
-      p2: "Niente dipendenze pesanti, niente codice copiato da Stack Overflow senza capirlo. Tutto il codice è open-source, rilasciato sotto licenza MIT, e ospitato su GitHub.",
+      p2: "Tutto il codice è open-source, rilasciato sotto licenza MIT e ospitato su GitHub. Aiutato dall'intelligenza artificiale? Sì, ma mai con il pilota automatico, con l'obiettivo di migliorare produttività e qualità del codice. Se questo ti disturba, passa pure oltre, non c'è nulla di cui vergognarsi nell'usare strumenti che ti aiutano a fare un lavoro migliore e più efficiente.",
       p3: "Se uno di questi plugin ti è utile, lascia una stella sul repository o apri una issue con feedback. Le pull request sono sempre benvenute.",
       github: "GitHub",
       contact: "Modulo di contatto",
