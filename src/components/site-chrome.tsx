@@ -66,14 +66,14 @@ export function SiteFooter() {
             <p className="text-xs text-muted-foreground">{t.footer.tagline}</p>
           </div>
           <div className="flex items-center gap-8 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-            <a href="https://github.com/gioxx" target="_blank" rel="noreferrer" className="hover:text-foreground">
-              GitHub
-            </a>
             <Link to="/" hash="plugins" className="hover:text-foreground">
               {t.nav.plugins}
             </Link>
             <Link to="/" hash="collateral" className="hover:text-foreground">
               {t.nav.collateral}
+            </Link>
+            <Link to="/about" className="hover:text-foreground">
+              {t.nav.about}
             </Link>
             <Link to="/support" className="hover:text-foreground">
               {t.footer.support}
