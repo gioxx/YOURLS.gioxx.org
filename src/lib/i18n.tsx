@@ -112,7 +112,7 @@ const dicts: Record<Lang, Dict> = {
     nav: { plugins: "Plugin", about: "About", collateral: "Strumenti", github: "GitHub" },
     badge: { stableSuffix: "stabile" },
     home: {
-      eyebrow: "Plugin Suite per YOURLS",
+      eyebrow: "Suite di plugin per YOURLS",
       title: "Estensioni artigianali per la tua istanza di YOURLS.",
       subtitle:
         "Una collezione curata di plugin open-source che ti permetteranno di personalizzare e migliorare la tua esperienza d'uso di YOURLS. Codice pulito, zero dipendenze inutili, installazione semplice e utilizzo intuitivo.",
