@@ -4,7 +4,7 @@ export type Lang = "en" | "it";
 const STORAGE_KEY = "archivio-lang";
 
 type Dict = {
-  nav: { plugins: string; about: string; github: string };
+  nav: { plugins: string; about: string; collateral: string; github: string };
   badge: { stableSuffix: string };
   home: {
     eyebrow: string;
@@ -54,13 +54,13 @@ type Dict = {
 
 const dicts: Record<Lang, Dict> = {
   en: {
-    nav: { plugins: "Plugins", about: "About", github: "GitHub" },
+    nav: { plugins: "Plugins", about: "About", collateral: "Side projects", github: "GitHub" },
     badge: { stableSuffix: "stable" },
     home: {
       eyebrow: "Plugin Suite for YOURLS",
-      title: "Handcrafted extensions for your YOURLS ecosystem.",
+      title: "Handcrafted plugins for your YOURLS instance.",
       subtitle:
-        "A curated collection of open-source plugins focused on performance, security and advanced data analysis. Clean code, zero useless dependencies.",
+        "A curated collection of open-source plugins that will allow you to customize and enhance your YOURLS experience. Clean code, zero unnecessary dependencies, simple installation and intuitive usage.",
       availableCount: (n) => `Available plugins · ${n}`,
       allRepos: "All repositories →",
       explore: "Explore details",
@@ -109,13 +109,13 @@ const dicts: Record<Lang, Dict> = {
     language: { label: "Language" },
   },
   it: {
-    nav: { plugins: "Plugin", about: "About", github: "GitHub" },
+    nav: { plugins: "Plugin", about: "About", collateral: "Progetti collaterali", github: "GitHub" },
     badge: { stableSuffix: "stabile" },
     home: {
       eyebrow: "Plugin Suite per YOURLS",
-      title: "Estensioni artigianali per il tuo ecosistema YOURLS.",
+      title: "Estensioni artigianali per la tua istanza di YOURLS.",
       subtitle:
-        "Una collezione curata di plugin open-source focalizzati su prestazioni, sicurezza e analisi avanzata dei dati. Codice pulito, zero dipendenze inutili.",
+        "Una collezione curata di plugin open-source che ti permetteranno di personalizzare e migliorare la tua esperienza d'uso di YOURLS. Codice pulito, zero dipendenze inutili, installazione semplice e utilizzo intuitivo.",
       availableCount: (n) => `Plugin disponibili · ${n}`,
       allRepos: "Tutti i repository →",
       explore: "Esplora dettagli",

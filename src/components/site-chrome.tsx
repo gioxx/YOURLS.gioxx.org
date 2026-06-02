@@ -13,13 +13,17 @@ export function SiteNav() {
             <img src="/favicon.svg" alt="" className="size-5 shrink-0" />
             gioxx/YOURLS
           </Link>
-          <div className="hidden md:flex gap-6 text-sm font-medium text-muted-foreground">
+          <div className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
             <Link to="/" hash="plugins" className="hover:text-foreground transition-colors">
               {t.nav.plugins}
+            </Link>
+            <Link to="/" hash="collateral" className="hover:text-foreground transition-colors">
+              {t.nav.collateral}
             </Link>
             <Link to="/about" className="hover:text-foreground transition-colors">
               {t.nav.about}
             </Link>
+            <span className="w-px h-3.5 bg-border" />
             <a
               href="https://yourls.org"
               target="_blank"
@@ -58,16 +62,20 @@ export function SiteFooter() {
             <p className="text-sm font-bold tracking-tighter uppercase mb-1">gioxx/YOURLS</p>
             <p className="text-xs text-muted-foreground">{t.footer.tagline}</p>
           </div>
-          <div className="flex gap-8 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+          <div className="flex items-center gap-8 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
             <a href="https://github.com/gioxx" target="_blank" rel="noreferrer" className="hover:text-foreground">
               GitHub
             </a>
-            <a href="https://yourls.org" target="_blank" rel="noreferrer" className="hover:text-foreground">
-              Download YOURLS
-            </a>
+            <Link to="/" hash="collateral" className="hover:text-foreground">
+              {t.nav.collateral}
+            </Link>
             <Link to="/about" className="hover:text-foreground">
               {t.footer.support}
             </Link>
+            <span className="w-px h-3 bg-border/60" />
+            <a href="https://yourls.org" target="_blank" rel="noreferrer" className="hover:text-foreground">
+              Download YOURLS
+            </a>
           </div>
         </div>
         <div className="border-t border-border pt-6">

@@ -147,7 +147,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="mt-24 pt-16 border-t border-border">
+        <section id="collateral" className="mt-24 pt-16 border-t border-border scroll-mt-24">
           <div className="flex items-center gap-3 mb-6">
             <span className="w-8 h-px bg-accent" />
             <span className="font-mono text-xs uppercase tracking-widest text-accent">
