@@ -54,7 +54,7 @@ type Dict = {
 
 const dicts: Record<Lang, Dict> = {
   en: {
-    nav: { plugins: "Plugins", about: "About", collateral: "Side projects", github: "GitHub" },
+    nav: { plugins: "Plugins", about: "About", collateral: "Tools", github: "GitHub" },
     badge: { stableSuffix: "stable" },
     home: {
       eyebrow: "Plugin Suite for YOURLS",
@@ -109,7 +109,7 @@ const dicts: Record<Lang, Dict> = {
     language: { label: "Language" },
   },
   it: {
-    nav: { plugins: "Plugin", about: "About", collateral: "Progetti collaterali", github: "GitHub" },
+    nav: { plugins: "Plugin", about: "About", collateral: "Strumenti", github: "GitHub" },
     badge: { stableSuffix: "stabile" },
     home: {
       eyebrow: "Plugin Suite per YOURLS",
