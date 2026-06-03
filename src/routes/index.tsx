@@ -158,6 +158,7 @@ function Index() {
             {t.home.collateralSubtitle}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* YOURLS-diff */}
             <a
               href="https://github.com/gioxx/YOURLS-diff"
               target="_blank"
@@ -167,17 +168,46 @@ function Index() {
               <div className="size-10 bg-accent/5 rounded-lg flex items-center justify-center mb-6 ring-1 ring-accent/10 text-accent">
                 <GitCompare className="size-5" />
               </div>
-              <h3 className="font-bold text-lg leading-tight mb-2">YOURLS-diff</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-6">
+              <div className="flex justify-between items-start mb-2 gap-3">
+                <h3 className="font-bold text-lg leading-tight">YOURLS-diff</h3>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                 {lang === "it"
-                  ? "Confronta velocemente file e directory tra istanze YOURLS per identificare differenze in configurazioni e codice personalizzato."
-                  : "Quickly compare files and directories across YOURLS instances to spot differences in configurations and custom code."}
+                  ? "Tool Python che genera un pacchetto ZIP minimale contenente solo i file cambiati tra due release di YOURLS, evitando il caricamento dell'intero archivio ad ogni aggiornamento."
+                  : "Python tool that builds a minimal ZIP package containing only the files changed between two YOURLS releases, avoiding the need to upload the entire archive on every update."}
               </p>
-              <div className="inline-flex items-center gap-2 text-sm font-medium text-accent">
-                <ExternalLink className="size-4" />
+              <ul className="space-y-1.5 mb-6 flex-1">
+                {(lang === "it" ? [
+                  "Confronto automatico tra due tag di release",
+                  "ZIP con soli i file nuovi, modificati o rimossi",
+                  "Script rsync/SSH e WinSCP per il deploy",
+                  "Patch giornaliere auto-generate via GitHub Actions",
+                ] : [
+                  "Automatic diff between any two release tags",
+                  "ZIP with only new, modified or removed files",
+                  "rsync/SSH and WinSCP scripts for deployment",
+                  "Daily patches auto-generated via GitHub Actions",
+                ]).map((f) => (
+                  <li key={f} className="flex gap-2 text-xs text-foreground/80">
+                    <span className="text-accent mt-0.5 shrink-0">●</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-2 mb-5">
+                {["Python", "CLI", "Update"].map((tag) => (
+                  <span key={tag} className="text-[10px] font-mono border border-border px-2 py-0.5 rounded uppercase text-muted-foreground">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="w-full py-2.5 rounded-lg bg-foreground text-background text-sm font-medium text-center group-hover:bg-accent group-hover:text-accent-foreground transition-colors inline-flex items-center justify-center gap-2">
+                <ExternalLink className="size-3.5" />
                 {lang === "it" ? "Apri su GitHub" : "Open on GitHub"}
               </div>
             </a>
+
+            {/* YOURLS-DockerCustom */}
             <a
               href="https://github.com/gioxx/YOURLS-DockerCustom"
               target="_blank"
@@ -187,14 +217,41 @@ function Index() {
               <div className="size-10 bg-accent/5 rounded-lg flex items-center justify-center mb-6 ring-1 ring-accent/10 text-accent">
                 <Container className="size-5" />
               </div>
-              <h3 className="font-bold text-lg leading-tight mb-2">YOURLS-DockerCustom</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed flex-1 mb-6">
+              <div className="flex justify-between items-start mb-2 gap-3">
+                <h3 className="font-bold text-lg leading-tight">YOURLS-DockerCustom</h3>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                 {lang === "it"
-                  ? "Container Docker personalizzato per YOURLS con configurazioni ottimizzate per ambienti di sviluppo e produzione."
-                  : "Custom Docker container for YOURLS with optimized configurations for development and production environments."}
+                  ? "Immagine Docker custom basata sull'immagine ufficiale YOURLS, con l'estensione PHP zip pre-installata — necessaria per diversi plugin e per le funzionalità di archiviazione."
+                  : "Custom Docker image based on the official YOURLS image, with the PHP zip extension pre-installed — required by several plugins and zip-based features."}
               </p>
-              <div className="inline-flex items-center gap-2 text-sm font-medium text-accent">
-                <ExternalLink className="size-4" />
+              <ul className="space-y-1.5 mb-6 flex-1">
+                {(lang === "it" ? [
+                  "Estende yourls:latest con php-zip abilitato",
+                  "Pronta per sviluppo locale e test dei plugin",
+                  "Esempio di stack Docker Compose incluso",
+                  "Zero modifiche al core di YOURLS",
+                ] : [
+                  "Extends yourls:latest with php-zip enabled",
+                  "Ready for local development and plugin testing",
+                  "Docker Compose stack example included",
+                  "Zero modifications to the YOURLS core",
+                ]).map((f) => (
+                  <li key={f} className="flex gap-2 text-xs text-foreground/80">
+                    <span className="text-accent mt-0.5 shrink-0">●</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-2 mb-5">
+                {["Docker", "PHP", "Dev"].map((tag) => (
+                  <span key={tag} className="text-[10px] font-mono border border-border px-2 py-0.5 rounded uppercase text-muted-foreground">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="w-full py-2.5 rounded-lg bg-foreground text-background text-sm font-medium text-center group-hover:bg-accent group-hover:text-accent-foreground transition-colors inline-flex items-center justify-center gap-2">
+                <ExternalLink className="size-3.5" />
                 {lang === "it" ? "Apri su GitHub" : "Open on GitHub"}
               </div>
             </a>
