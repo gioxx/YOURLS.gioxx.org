@@ -100,7 +100,7 @@ const dicts: Record<Lang, Dict> = {
       contactNote: "For support or questions about a specific plugin, open an issue directly on its GitHub repository. As a last resort, you can reach me via my contact form.",
     },
     footer: {
-      tagline: "Crafted with care for the open-source community.",
+      tagline: "❤️ Lovingly developed by the usually-on-vacation brain cell of Gioxx.",
       support: "Support",
       disclaimer:
         "All trademarks mentioned are the property of their respective owners. Third-party trademarks, product names, trade names, corporate names and companies mentioned may be trademarks of their respective owners or registered trademarks of other companies and have been used for explanatory purposes only and for the benefit of the owner, without any intent to infringe existing copyright.",
@@ -155,7 +155,7 @@ const dicts: Record<Lang, Dict> = {
       contactNote: "Per supporto o domande su uno specifico plugin, apri una Issue direttamente nel suo repository GitHub. In ultima istanza, puoi contattarmi tramite il mio modulo di contatto.",
     },
     footer: {
-      tagline: "Sviluppato con cura per la community open source.",
+      tagline: "❤️ Sviluppato con amore dall’unico neurone funzionante di Gioxx (quando non è in vacanza).",
       support: "Sostieni",
       disclaimer:
         "Tutti i marchi citati appartengono ai legittimi proprietari; marchi di terzi, nomi di prodotti, nomi commerciali, nomi corporativi e società citati possono essere marchi di proprietà dei rispettivi titolari o marchi registrati d'altre società e sono stati utilizzati a puro scopo esplicativo ed a beneficio del possessore, senza alcun fine di violazione dei diritti di Copyright vigenti.",
