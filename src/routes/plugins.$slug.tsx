@@ -80,10 +80,13 @@ function PluginDetail() {
   const stars = stats?.stars ?? plugin.stars;
   const downloadUrl = stats?.downloadUrl ?? plugin.download;
   const repoName = plugin.github.split("/").pop() ?? plugin.slug;
+  const zipName = `${repoName}-${version}.zip`;
   const sshCommands = [
-    `wget ${downloadUrl} && mv ${version} ${version}.zip && unzip ${version}.zip`,
+    `wget -O ${zipName} "${downloadUrl}"`,
+    `unzip ${zipName}`,
     `rm -rf ${repoName}/`,
     `mv gioxx-${repoName}-*/ ${repoName}/`,
+    `rm ${zipName}`,
   ];
   const publishedAt = stats?.publishedAt
     ? new Date(stats.publishedAt).toLocaleDateString(locale, {
