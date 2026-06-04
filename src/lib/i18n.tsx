@@ -34,6 +34,9 @@ type Dict = {
     notFoundBody: string;
     backHome: string;
     errorTitle: string;
+    sshTitle: string;
+    sshIntro: string;
+    sshAlt: string;
   };
   about: {
     eyebrow: string;
@@ -85,6 +88,11 @@ const dicts: Record<Lang, Dict> = {
       notFoundBody: "This plugin does not exist or has been removed.",
       backHome: "← Back to home",
       errorTitle: "Error",
+      sshTitle: "Can't install via Plugin Manager?",
+      sshIntro:
+        'If YOURLS doesn\'t have write permissions on the plugins directory, Plugin Manager will show an error like “Automatic installation is not possible because YOURLS cannot write to …/user/plugins”. In that case you can install manually over SSH — run these commands inside your plugins directory:',
+      sshAlt:
+        "Alternatively, download the ZIP above, extract it locally and upload the folder via FTP/SFTP.",
     },
     about: {
       eyebrow: "About",
@@ -140,6 +148,11 @@ const dicts: Record<Lang, Dict> = {
       notFoundBody: "Questo plugin non esiste o è stato rimosso.",
       backHome: "← Torna alla home",
       errorTitle: "Errore",
+      sshTitle: "Non riesci ad installare tramite Plugin Manager?",
+      sshIntro:
+        "Se YOURLS non ha i permessi di scrittura nella directory dei plugin, Plugin Manager mostrerà un errore del tipo \"L'installazione automatica non è possibile perché YOURLS non può scrivere in …/user/plugins\". In quel caso puoi installare manualmente via SSH — esegui questi comandi all'interno della directory dei plugin:",
+      sshAlt:
+        "In alternativa, scarica il pacchetto ZIP qui sopra, estrailo in locale e carica la cartella via FTP/SFTP.",
     },
     about: {
       eyebrow: "About",

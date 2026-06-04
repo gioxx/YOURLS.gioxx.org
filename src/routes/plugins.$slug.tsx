@@ -79,6 +79,12 @@ function PluginDetail() {
   const version = stats?.version ?? plugin.version;
   const stars = stats?.stars ?? plugin.stars;
   const downloadUrl = stats?.downloadUrl ?? plugin.download;
+  const repoName = plugin.github.split("/").pop() ?? plugin.slug;
+  const sshCommands = [
+    `wget ${downloadUrl} && mv ${version} ${version}.zip && unzip ${version}.zip`,
+    `rm -rf ${repoName}/`,
+    `mv gioxx-${repoName}-*/ ${repoName}/`,
+  ];
   const publishedAt = stats?.publishedAt
     ? new Date(stats.publishedAt).toLocaleDateString(locale, {
         year: "numeric",
@@ -221,6 +227,26 @@ function PluginDetail() {
             </div>
           </div>
         </div>
+
+        <section className="mb-20 animate-fade-in" style={{ animationDelay: "250ms" }}>
+          <div className="border border-amber-500/20 bg-amber-500/5 rounded-xl p-6 md:p-8">
+            <h2 className="font-semibold text-sm text-amber-600 dark:text-amber-400 mb-2">
+              {t.detail.sshTitle}
+            </h2>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+              {t.detail.sshIntro}
+            </p>
+            <div className="bg-[var(--code-bg)] rounded-lg p-4 font-mono text-xs text-white/80 space-y-1 mb-4 overflow-x-auto">
+              {sshCommands.map((cmd, i) => (
+                <div key={i} className="flex gap-3">
+                  <span className="text-white/30 select-none">{i + 1}</span>
+                  <span>{cmd}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-muted-foreground">{t.detail.sshAlt}</p>
+          </div>
+        </section>
 
         {releaseBody && (
           <section className="mb-20 animate-fade-in" style={{ animationDelay: "300ms" }}>
