@@ -241,7 +241,7 @@ function PluginDetail() {
           </div>
         </div>
 
-        <section id="manual-install" className="mb-20 animate-fade-in" style={{ animationDelay: "250ms" }}>
+        <section id="manual-install" className="mb-20 animate-fade-in scroll-mt-24" style={{ animationDelay: "250ms" }}>
           <div className="border border-amber-500/20 bg-amber-500/5 rounded-xl p-6 md:p-8">
             <div className="flex items-start justify-between gap-4 mb-2">
               <a
