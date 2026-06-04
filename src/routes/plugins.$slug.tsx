@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, Download, ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { ArrowLeft, Check, Copy, Download, ExternalLink, Link as LinkIcon } from "lucide-react";
 import { GithubIcon } from "@/components/github-icon";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -97,6 +98,14 @@ function PluginDetail() {
     : null;
   const releaseBody = stats?.releaseBody;
   const releaseUrl = stats?.releaseUrl;
+
+  const [copied, setCopied] = useState(false);
+  function copyCommands() {
+    navigator.clipboard.writeText(sshCommands.join("\n")).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-accent/10 selection:text-accent">
@@ -231,21 +240,40 @@ function PluginDetail() {
           </div>
         </div>
 
-        <section className="mb-20 animate-fade-in" style={{ animationDelay: "250ms" }}>
+        <section id="manual-install" className="mb-20 animate-fade-in" style={{ animationDelay: "250ms" }}>
           <div className="border border-amber-500/20 bg-amber-500/5 rounded-xl p-6 md:p-8">
-            <h2 className="font-semibold text-sm text-amber-600 dark:text-amber-400 mb-2">
-              {t.detail.sshTitle}
-            </h2>
+            <div className="flex items-start justify-between gap-4 mb-2">
+              <a
+                href="#manual-install"
+                className="group inline-flex items-center gap-2 font-semibold text-sm text-amber-600 dark:text-amber-400 hover:underline"
+              >
+                {t.detail.sshTitle}
+                <LinkIcon className="size-3 opacity-0 group-hover:opacity-60 transition-opacity" />
+              </a>
+            </div>
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">
               {t.detail.sshIntro}
             </p>
-            <div className="bg-[var(--code-bg)] rounded-lg p-4 font-mono text-xs text-white/80 space-y-1 mb-4 overflow-x-auto">
-              {sshCommands.map((cmd, i) => (
-                <div key={i} className="flex gap-3">
-                  <span className="text-white/30 select-none">{i + 1}</span>
-                  <span>{cmd}</span>
-                </div>
-              ))}
+            <div className="bg-[var(--code-bg)] rounded-lg overflow-hidden mb-4">
+              <div className="flex items-center justify-between px-4 py-2 border-b border-white/5">
+                <span className="font-mono text-[10px] text-white/30 uppercase tracking-widest">SSH</span>
+                <button
+                  type="button"
+                  onClick={copyCommands}
+                  className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest text-white/40 hover:text-white/80 transition-colors"
+                >
+                  {copied ? <Check className="size-3" /> : <Copy className="size-3" />}
+                  {copied ? "Copied!" : "Copy"}
+                </button>
+              </div>
+              <div className="p-4 font-mono text-xs text-white/80 space-y-1 overflow-x-auto">
+                {sshCommands.map((cmd, i) => (
+                  <div key={i} className="flex gap-3">
+                    <span className="text-white/30 select-none">{i + 1}</span>
+                    <span>{cmd}</span>
+                  </div>
+                ))}
+              </div>
             </div>
             <p className="text-xs text-muted-foreground">{t.detail.sshAlt}</p>
           </div>

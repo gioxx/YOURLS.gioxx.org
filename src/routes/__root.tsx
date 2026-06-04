@@ -11,6 +11,7 @@ import {
 import appCss from "../styles.css?url";
 import { ThemeProvider } from "@/lib/theme";
 import { I18nProvider } from "@/lib/i18n";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 const themeInitScript = `(function(){try{var t=localStorage.getItem('archivio-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);}catch(e){}})();`;
 
@@ -117,6 +118,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <I18nProvider>
         <ThemeProvider>
+          <ScrollReveal />
           <Outlet />
         </ThemeProvider>
       </I18nProvider>
