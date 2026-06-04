@@ -114,6 +114,7 @@ function PluginDetail() {
       <main className="max-w-6xl mx-auto px-6 py-16">
         <Link
           to="/"
+          hash="plugins"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12 animate-fade-in"
         >
           <ArrowLeft className="size-4" />
