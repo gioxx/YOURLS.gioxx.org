@@ -20,11 +20,18 @@ export function PluginCard({
     <Link
       to="/plugins/$slug"
       params={{ slug: plugin.slug }}
-      className="group relative bg-card ring-1 ring-border rounded-xl p-6 hover:ring-accent/40 hover:-translate-y-0.5 transition-all duration-300 animate-fade-in flex flex-col"
+      className={`group relative bg-card ring-1 rounded-xl p-6 hover:-translate-y-0.5 transition-all duration-300 animate-fade-in flex flex-col ${plugin.featured ? "ring-accent/30 hover:ring-accent/60 shadow-[0_0_0_1px_hsl(var(--accent)/0.15)]" : "ring-border hover:ring-accent/40"}`}
       style={{ animationDelay: `${100 + index * 50}ms` }}
     >
-      <div className="size-10 bg-accent/5 rounded-lg flex items-center justify-center mb-6 ring-1 ring-accent/10 text-accent">
-        <Icon className="size-5" />
+      <div className="flex items-start justify-between mb-6 gap-3">
+        <div className="size-10 bg-accent/5 rounded-lg flex items-center justify-center ring-1 ring-accent/10 text-accent shrink-0">
+          <Icon className="size-5" />
+        </div>
+        {plugin.featured && (
+          <span className="font-mono text-[9px] uppercase tracking-widest text-accent border border-accent/30 bg-accent/5 px-2 py-0.5 rounded-full shrink-0">
+            {lang === "it" ? "In evidenza" : "Featured"}
+          </span>
+        )}
       </div>
       <div className="flex justify-between items-start mb-2 gap-3">
         <h3 className="font-bold text-lg leading-tight">{plugin.name}</h3>

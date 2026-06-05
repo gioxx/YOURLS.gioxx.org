@@ -4,6 +4,7 @@ import {
   PackageSearch,
   Mail,
   LayoutTemplate,
+  Languages,
   type LucideIcon,
 } from "lucide-react";
 import type { Lang } from "@/lib/i18n";
@@ -26,6 +27,7 @@ export type Plugin = {
   download: string;
   features: Localized<string[]>;
   install: string[];
+  featured?: boolean;
 };
 
 const GH_USER = "gioxx";
@@ -34,6 +36,7 @@ const dl = (name: string) =>
   `https://github.com/${GH_USER}/${name}/archive/refs/heads/main.zip`;
 
 export const plugins: Plugin[] = [
+  // Plugin Manager — in evidenza, mostrato sempre per primo
   {
     slug: "plugin-manager",
     name: "Plugin Manager",
@@ -72,6 +75,128 @@ export const plugins: Plugin[] = [
       "cd user/plugins",
       "git clone https://github.com/gioxx/YOURLS-PluginManager",
       "# Activate 'Plugin Manager' from the YOURLS admin panel",
+    ],
+    featured: true,
+  },
+  // Ordine alfabetico
+  {
+    slug: "alternative-index",
+    name: "Alternative Index",
+    tagline: {
+      en: "Turn the YOURLS root into a Linktree-style profile page.",
+      it: "Trasforma la root di YOURLS in una pagina profilo in stile Linktree.",
+    },
+    description: {
+      en: "Alternative Index replaces the default YOURLS root page with a customizable profile page: social links, featured content and custom branding. An elegant way to reuse your shortener's domain.",
+      it: "Alternative Index sostituisce la pagina di default della root di YOURLS con una pagina profilo personalizzabile: link social, contenuti in evidenza e branding custom. Un modo elegante per riutilizzare il dominio del tuo shortener.",
+    },
+    icon: LayoutTemplate,
+    tags: ["Landing", "Branding"],
+    stars: "—",
+    version: "",
+    status: "stable",
+    yourlsMin: "1.7.9+",
+    phpCompat: "7.4 / 8.x",
+    github: repo("YOURLS-AlternativeIndex"),
+    download: dl("YOURLS-AlternativeIndex"),
+    features: {
+      en: [
+        "Linktree-style profile page on the domain root.",
+        "Configurable social links and featured content.",
+        "Custom branding: logo, colors, copy.",
+        "No external dependencies or third-party services.",
+      ],
+      it: [
+        "Pagina profilo Linktree-style sulla root del dominio.",
+        "Link social e contenuti in evidenza configurabili.",
+        "Branding personalizzato: logo, colori, copy.",
+        "Nessuna dipendenza esterna o servizio terzo.",
+      ],
+    },
+    install: [
+      "cd user/plugins",
+      "git clone https://github.com/gioxx/YOURLS-AlternativeIndex",
+      "# Activate 'Alternative Index' from the admin panel",
+    ],
+  },
+  {
+    slug: "change-notifier",
+    name: "Change Notifier",
+    tagline: {
+      en: "Instant email notifications for every change to your short URLs.",
+      it: "Notifiche email istantanee per ogni modifica ai tuoi short URL.",
+    },
+    description: {
+      en: "Change Notifier monitors creation, editing and deletion of short URLs and sends real-time email notifications. Ideal for teams and for anyone who needs a readable audit trail on every change.",
+      it: "Change Notifier monitora creazione, modifica ed eliminazione degli short URL e invia notifiche email in tempo reale. Ideale per team e per chi ha bisogno di un audit trail leggibile su ogni cambiamento.",
+    },
+    icon: Mail,
+    tags: ["Notifications", "Audit"],
+    stars: "—",
+    version: "",
+    status: "stable",
+    yourlsMin: "1.7.9+",
+    phpCompat: "7.4 / 8.x",
+    github: repo("YOURLS-ChangeNotifier"),
+    download: dl("YOURLS-ChangeNotifier"),
+    features: {
+      en: [
+        "Instant emails on every creation, change or deletion.",
+        "Multiple configurable recipients.",
+        "Readable audit trail across all changes.",
+        "Minimal setup from the admin interface.",
+      ],
+      it: [
+        "Email istantanee a ogni creazione, modifica o eliminazione.",
+        "Destinatari multipli configurabili.",
+        "Audit trail leggibile su tutti i cambiamenti.",
+        "Setup minimale dall'interfaccia admin.",
+      ],
+    },
+    install: [
+      "cd user/plugins",
+      "git clone https://github.com/gioxx/YOURLS-ChangeNotifier",
+      "# Configure email recipients from the plugin panel",
+    ],
+  },
+  {
+    slug: "language-switcher",
+    name: "Language Switcher",
+    tagline: {
+      en: "Add a language selector to the YOURLS admin panel interface.",
+      it: "Aggiungi un selettore lingua all'interfaccia del pannello admin di YOURLS.",
+    },
+    description: {
+      en: "Language Switcher adds a compact language selector to the YOURLS admin panel, letting administrators switch the interface language on the fly — without editing config files or redeploying.",
+      it: "Language Switcher aggiunge un selettore lingua compatto al pannello admin di YOURLS, consentendo agli amministratori di cambiare la lingua dell'interfaccia al volo, senza modificare file di configurazione né ridistribuire.",
+    },
+    icon: Languages,
+    tags: ["Admin", "i18n", "UI"],
+    stars: "—",
+    version: "",
+    status: "stable",
+    yourlsMin: "1.7.9+",
+    phpCompat: "7.4 / 8.x",
+    github: repo("YOURLS-LanguageSwitcher"),
+    download: dl("YOURLS-LanguageSwitcher"),
+    features: {
+      en: [
+        "Language selector integrated in the admin panel.",
+        "Switch interface language without touching config files.",
+        "Supports all YOURLS language packs.",
+        "Minimal footprint, zero external dependencies.",
+      ],
+      it: [
+        "Selettore lingua integrato nel pannello di amministrazione.",
+        "Cambia lingua dell'interfaccia senza toccare i file di configurazione.",
+        "Compatibile con tutti i language pack di YOURLS.",
+        "Footprint minimo, zero dipendenze esterne.",
+      ],
+    },
+    install: [
+      "cd user/plugins",
+      "git clone https://github.com/gioxx/YOURLS-LanguageSwitcher",
+      "# Activate 'Language Switcher' from the admin panel",
     ],
   },
   {
@@ -152,86 +277,6 @@ export const plugins: Plugin[] = [
       "cd user/plugins",
       "git clone https://github.com/gioxx/YOURLS-URLFallback",
       "# Set the fallback URL from the plugin panel",
-    ],
-  },
-  {
-    slug: "change-notifier",
-    name: "Change Notifier",
-    tagline: {
-      en: "Instant email notifications for every change to your short URLs.",
-      it: "Notifiche email istantanee per ogni modifica ai tuoi short URL.",
-    },
-    description: {
-      en: "Change Notifier monitors creation, editing and deletion of short URLs and sends real-time email notifications. Ideal for teams and for anyone who needs a readable audit trail on every change.",
-      it: "Change Notifier monitora creazione, modifica ed eliminazione degli short URL e invia notifiche email in tempo reale. Ideale per team e per chi ha bisogno di un audit trail leggibile su ogni cambiamento.",
-    },
-    icon: Mail,
-    tags: ["Notifications", "Audit"],
-    stars: "—",
-    version: "",
-    status: "stable",
-    yourlsMin: "1.7.9+",
-    phpCompat: "7.4 / 8.x",
-    github: repo("YOURLS-ChangeNotifier"),
-    download: dl("YOURLS-ChangeNotifier"),
-    features: {
-      en: [
-        "Instant emails on every creation, change or deletion.",
-        "Multiple configurable recipients.",
-        "Readable audit trail across all changes.",
-        "Minimal setup from the admin interface.",
-      ],
-      it: [
-        "Email istantanee a ogni creazione, modifica o eliminazione.",
-        "Destinatari multipli configurabili.",
-        "Audit trail leggibile su tutti i cambiamenti.",
-        "Setup minimale dall'interfaccia admin.",
-      ],
-    },
-    install: [
-      "cd user/plugins",
-      "git clone https://github.com/gioxx/YOURLS-ChangeNotifier",
-      "# Configure email recipients from the plugin panel",
-    ],
-  },
-  {
-    slug: "alternative-index",
-    name: "Alternative Index",
-    tagline: {
-      en: "Turn the YOURLS root into a Linktree-style profile page.",
-      it: "Trasforma la root di YOURLS in una pagina profilo in stile Linktree.",
-    },
-    description: {
-      en: "Alternative Index replaces the default YOURLS root page with a customizable profile page: social links, featured content and custom branding. An elegant way to reuse your shortener's domain.",
-      it: "Alternative Index sostituisce la pagina di default della root di YOURLS con una pagina profilo personalizzabile: link social, contenuti in evidenza e branding custom. Un modo elegante per riutilizzare il dominio del tuo shortener.",
-    },
-    icon: LayoutTemplate,
-    tags: ["Landing", "Branding"],
-    stars: "—",
-    version: "",
-    status: "stable",
-    yourlsMin: "1.7.9+",
-    phpCompat: "7.4 / 8.x",
-    github: repo("YOURLS-AlternativeIndex"),
-    download: dl("YOURLS-AlternativeIndex"),
-    features: {
-      en: [
-        "Linktree-style profile page on the domain root.",
-        "Configurable social links and featured content.",
-        "Custom branding: logo, colors, copy.",
-        "No external dependencies or third-party services.",
-      ],
-      it: [
-        "Pagina profilo Linktree-style sulla root del dominio.",
-        "Link social e contenuti in evidenza configurabili.",
-        "Branding personalizzato: logo, colori, copy.",
-        "Nessuna dipendenza esterna o servizio terzo.",
-      ],
-    },
-    install: [
-      "cd user/plugins",
-      "git clone https://github.com/gioxx/YOURLS-AlternativeIndex",
-      "# Activate 'Alternative Index' from the admin panel",
     ],
   },
 ];
