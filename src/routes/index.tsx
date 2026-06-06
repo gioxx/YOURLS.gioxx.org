@@ -222,20 +222,20 @@ function Index() {
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                 {lang === "it"
-                  ? "Immagine Docker custom basata sull'immagine ufficiale YOURLS, con l'estensione PHP zip pre-installata — necessaria per diversi plugin e per le funzionalità di archiviazione."
-                  : "Custom Docker image based on the official YOURLS image, with the PHP zip extension pre-installed — required by several plugins and zip-based features."}
+                  ? "Immagine Docker custom basata sull'immagine ufficiale YOURLS, con php-zip pre-installato, traduzioni ufficiali per 4 lingue incluse a bordo e Plugin Manager e Language Switcher pre-caricati e pronti all'attivazione."
+                  : "Custom Docker image based on the official YOURLS image, with php-zip pre-installed, official translations for 4 languages bundled, and Plugin Manager and Language Switcher included and ready to activate."}
               </p>
               <ul className="space-y-1.5 mb-6 flex-1">
                 {(lang === "it" ? [
                   "Estende yourls:latest con php-zip abilitato",
-                  "Pronta per sviluppo locale e test dei plugin",
+                  "Traduzioni ufficiali per de_DE, es_ES, fr_FR, it_IT incluse a bordo",
+                  "Plugin Manager e Language Switcher pre-caricati nell'immagine",
                   "Esempio di stack Docker Compose incluso",
-                  "Zero modifiche al core di YOURLS",
                 ] : [
                   "Extends yourls:latest with php-zip enabled",
-                  "Ready for local development and plugin testing",
+                  "Official translations for de_DE, es_ES, fr_FR, it_IT bundled in the image",
+                  "Plugin Manager and Language Switcher preloaded in the image",
                   "Docker Compose stack example included",
-                  "Zero modifications to the YOURLS core",
                 ]).map((f) => (
                   <li key={f} className="flex gap-2 text-xs text-foreground/80">
                     <span className="text-accent mt-0.5 shrink-0">●</span>
