@@ -9,20 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SupportRouteImport } from './routes/support'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as DonateRouteImport } from './routes/donate'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PluginsSlugRouteImport } from './routes/plugins.$slug'
 
-const SupportRoute = SupportRouteImport.update({
-  id: '/support',
-  path: '/support',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonateRoute = DonateRouteImport.update({
+  id: '/donate',
+  path: '/donate',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -44,61 +44,61 @@ const PluginsSlugRoute = PluginsSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/donate': typeof DonateRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/support': typeof SupportRoute
   '/plugins/$slug': typeof PluginsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/donate': typeof DonateRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/support': typeof SupportRoute
   '/plugins/$slug': typeof PluginsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/donate': typeof DonateRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/support': typeof SupportRoute
   '/plugins/$slug': typeof PluginsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/sitemap.xml' | '/support' | '/plugins/$slug'
+  fullPaths: '/' | '/about' | '/donate' | '/sitemap.xml' | '/plugins/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/sitemap.xml' | '/support' | '/plugins/$slug'
+  to: '/' | '/about' | '/donate' | '/sitemap.xml' | '/plugins/$slug'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/donate'
     | '/sitemap.xml'
-    | '/support'
     | '/plugins/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  DonateRoute: typeof DonateRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  SupportRoute: typeof SupportRoute
   PluginsSlugRoute: typeof PluginsSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/support': {
-      id: '/support'
-      path: '/support'
-      fullPath: '/support'
-      preLoaderRoute: typeof SupportRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donate': {
+      id: '/donate'
+      path: '/donate'
+      fullPath: '/donate'
+      preLoaderRoute: typeof DonateRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -128,8 +128,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  DonateRoute: DonateRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  SupportRoute: SupportRoute,
   PluginsSlugRoute: PluginsSlugRoute,
 }
 export const routeTree = rootRouteImport

@@ -3,18 +3,18 @@ import { ExternalLink, Heart, Coffee } from "lucide-react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { useI18n } from "@/lib/i18n";
 
-export const Route = createFileRoute("/support")({
+export const Route = createFileRoute("/donate")({
   head: () => ({
     meta: [
-      { title: "Support — gioxx/YOURLS" },
+      { title: "Donate — gioxx/YOURLS" },
       {
         name: "description",
         content: "Support the development of gioxx/YOURLS plugins.",
       },
-      { property: "og:title", content: "Support — gioxx/YOURLS" },
+      { property: "og:title", content: "Donate — gioxx/YOURLS" },
     ],
   }),
-  component: Support,
+  component: Donate,
 });
 
 const methods = [
@@ -59,7 +59,7 @@ const methods = [
   },
 ];
 
-function Support() {
+function Donate() {
   const { lang } = useI18n();
 
   return (
@@ -70,7 +70,7 @@ function Support() {
           <div className="flex items-center gap-3 mb-6">
             <span className="w-8 h-px bg-accent" />
             <span className="font-mono text-xs uppercase tracking-widest text-accent">
-              {lang === "it" ? "Sostieni" : "Support"}
+              {lang === "it" ? "Sostieni" : "Donate"}
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-balance leading-[1.05]">

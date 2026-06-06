@@ -23,6 +23,10 @@ export function SiteNav() {
             <Link to="/about" className="hover:text-foreground transition-colors">
               {t.nav.about}
             </Link>
+            <Link to="/donate" className="hover:text-foreground transition-colors">
+              {t.footer.support}
+            </Link>
+            <span className="w-px h-3.5 bg-border" />
             <a
               href="https://gioxx.org/tag/yourls/"
               target="_blank"
@@ -31,9 +35,6 @@ export function SiteNav() {
             >
               {t.nav.blog}
             </a>
-            <Link to="/support" className="hover:text-foreground transition-colors">
-              {t.footer.support}
-            </Link>
             <span className="w-px h-3.5 bg-border" />
             <a
               href="https://yourls.org"
@@ -83,12 +84,13 @@ export function SiteFooter() {
             <Link to="/about" className="hover:text-foreground">
               {t.nav.about}
             </Link>
+            <Link to="/donate" className="hover:text-foreground">
+              {t.footer.support}
+            </Link>
+            <span className="w-px h-3 bg-border/60" />
             <a href="https://gioxx.org/tag/yourls/" target="_blank" rel="noreferrer" className="hover:text-foreground">
               {t.nav.blog}
             </a>
-            <Link to="/support" className="hover:text-foreground">
-              {t.footer.support}
-            </Link>
             <span className="w-px h-3 bg-border/60" />
             <a href="https://yourls.org" target="_blank" rel="noreferrer" className="hover:text-foreground">
               Download YOURLS
