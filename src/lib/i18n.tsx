@@ -4,7 +4,7 @@ export type Lang = "en" | "it";
 const STORAGE_KEY = "archivio-lang";
 
 type Dict = {
-  nav: { plugins: string; about: string; collateral: string; github: string };
+  nav: { plugins: string; about: string; collateral: string; github: string; blog: string };
   badge: { stableSuffix: string };
   home: {
     eyebrow: string;
@@ -57,7 +57,7 @@ type Dict = {
 
 const dicts: Record<Lang, Dict> = {
   en: {
-    nav: { plugins: "Plugins", about: "About", collateral: "Tools", github: "GitHub" },
+    nav: { plugins: "Plugins", about: "About", collateral: "Tools", github: "GitHub", blog: "Blog" },
     badge: { stableSuffix: "stable" },
     home: {
       eyebrow: "Plugin Suite for YOURLS",
@@ -109,7 +109,7 @@ const dicts: Record<Lang, Dict> = {
     },
     footer: {
       tagline: "❤️ Lovingly developed by the usually-on-vacation brain cell of Gioxx.",
-      support: "Support",
+      support: "Donate",
       disclaimer:
         "All trademarks mentioned are the property of their respective owners. Third-party trademarks, product names, trade names, corporate names and companies mentioned may be trademarks of their respective owners or registered trademarks of other companies and have been used for explanatory purposes only and for the benefit of the owner, without any intent to infringe existing copyright.",
     },
@@ -117,7 +117,7 @@ const dicts: Record<Lang, Dict> = {
     language: { label: "Language" },
   },
   it: {
-    nav: { plugins: "Plugin", about: "About", collateral: "Strumenti", github: "GitHub" },
+    nav: { plugins: "Plugin", about: "About", collateral: "Strumenti", github: "GitHub", blog: "Blog" },
     badge: { stableSuffix: "stabile" },
     home: {
       eyebrow: "Suite di plugin per YOURLS",

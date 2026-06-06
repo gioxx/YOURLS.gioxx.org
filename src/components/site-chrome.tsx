@@ -23,6 +23,14 @@ export function SiteNav() {
             <Link to="/about" className="hover:text-foreground transition-colors">
               {t.nav.about}
             </Link>
+            <a
+              href="https://gioxx.org/tag/yourls/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-foreground transition-colors"
+            >
+              {t.nav.blog}
+            </a>
             <Link to="/support" className="hover:text-foreground transition-colors">
               {t.footer.support}
             </Link>
@@ -75,6 +83,9 @@ export function SiteFooter() {
             <Link to="/about" className="hover:text-foreground">
               {t.nav.about}
             </Link>
+            <a href="https://gioxx.org/tag/yourls/" target="_blank" rel="noreferrer" className="hover:text-foreground">
+              {t.nav.blog}
+            </a>
             <Link to="/support" className="hover:text-foreground">
               {t.footer.support}
             </Link>
