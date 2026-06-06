@@ -69,40 +69,11 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-card mt-20">
       <div className="max-w-6xl mx-auto px-6 py-10">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
-          <div>
-            <p className="text-sm font-bold tracking-tighter uppercase mb-1">gioxx/YOURLS</p>
-            <p className="text-xs text-muted-foreground">{t.footer.tagline}</p>
-          </div>
-          <div className="flex items-center gap-8 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-            <Link to="/" hash="plugins" className="hover:text-foreground">
-              {t.nav.plugins}
-            </Link>
-            <Link to="/" hash="collateral" className="hover:text-foreground">
-              {t.nav.collateral}
-            </Link>
-            <Link to="/about" className="hover:text-foreground">
-              {t.nav.about}
-            </Link>
-            <Link to="/donate" className="hover:text-foreground">
-              {t.footer.support}
-            </Link>
-            <span className="w-px h-3 bg-border/60" />
-            <a href="https://gioxx.org/tag/yourls/" target="_blank" rel="noreferrer" className="hover:text-foreground">
-              {t.nav.blog}
-            </a>
-            <span className="w-px h-3 bg-border/60" />
-            <a href="https://yourls.org" target="_blank" rel="noreferrer" className="hover:text-foreground">
-              Download YOURLS
-            </a>
-          </div>
-        </div>
-        <div className="border-t border-border pt-6">
-          <p className="text-[10px] font-mono text-muted-foreground mb-3">© {new Date().getFullYear()} GIOXX/YOURLS</p>
-          <p className="text-[10px] leading-relaxed text-muted-foreground/70">
-            {t.footer.disclaimer}
-          </p>
-        </div>
+        <p className="text-sm font-bold tracking-tighter uppercase mb-1">© {new Date().getFullYear()} GIOXX/YOURLS</p>
+        <p className="text-xs text-muted-foreground mb-6">{t.footer.tagline}</p>
+        <p className="text-[10px] leading-relaxed text-muted-foreground/70">
+          {t.footer.disclaimer}
+        </p>
       </div>
     </footer>
   );
