@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowLeft, Check, Copy, Download, ExternalLink, Link as LinkIcon } from "lucide-react";
+import { ArrowLeft, Check, Copy, Download, ExternalLink, Link as LinkIcon, Sparkles } from "lucide-react";
 import { GithubIcon } from "@/components/github-icon";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -152,6 +152,15 @@ function PluginDetail() {
                   {t.detail.releasedOn} {publishedAt}
                 </span>
               )}
+              <a
+                href="https://github.com/YOURLS/awesome"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded uppercase text-accent border border-accent/20 hover:border-accent/40 transition-colors"
+              >
+                <Sparkles className="size-2.5" />
+                {t.detail.awesomeYourls}
+              </a>
             </div>
           </div>
 

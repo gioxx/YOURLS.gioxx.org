@@ -37,6 +37,7 @@ type Dict = {
     sshTitle: string;
     sshIntro: string;
     sshAlt: string;
+    awesomeYourls: string;
   };
   about: {
     eyebrow: string;
@@ -46,8 +47,12 @@ type Dict = {
     p1Post: string;
     p2: string;
     p3: string;
+    p4Pre: string;
+    p4Mid: string;
+    p4Post: string;
     github: string;
     contact: string;
+    awesomeYourls: string;
     contactNote: string;
   };
   footer: { tagline: string; support: string; disclaimer: string };
@@ -93,6 +98,7 @@ const dicts: Record<Lang, Dict> = {
         'If YOURLS doesn\'t have write permissions on the plugins directory, Plugin Manager will show an error like “Automatic installation is not possible because YOURLS cannot write to …/user/plugins”. In that case you can install manually over SSH — run these commands inside your plugins directory:',
       sshAlt:
         "Alternatively, download the ZIP above, extract it locally and upload the folder via FTP/SFTP.",
+      awesomeYourls: "Awesome YOURLS",
     },
     about: {
       eyebrow: "About",
@@ -103,8 +109,12 @@ const dicts: Record<Lang, Dict> = {
         ", the well-known self-hosted PHP URL shortener. Every plugin is born from a real problem, solved in the simplest and most robust way possible.",
       p2: "All code is open-source, released under MIT license and hosted on GitHub. Helped by AI? Yes, but never on autopilot, with the goal of improving productivity and code quality. If this bothers you, feel free to look away, there's nothing shameful in using tools that help you do a better and more efficient job.",
       p3: "If one of these plugins is useful to you, leave a star on the repository or open an issue with feedback. Pull requests are always welcome.",
+      p4Pre: "Every plugin in this collection is also listed on ",
+      p4Mid: "Awesome YOURLS",
+      p4Post: ", the community-curated list of plugins, themes and resources for the project.",
       github: "GitHub",
       contact: "Contact form",
+      awesomeYourls: "Awesome YOURLS",
       contactNote: "For support or questions about a specific plugin, open an issue directly on its GitHub repository. As a last resort, you can reach me via my contact form.",
     },
     footer: {
@@ -153,6 +163,7 @@ const dicts: Record<Lang, Dict> = {
         "Se YOURLS non ha i permessi di scrittura nella directory dei plugin, Plugin Manager mostrerà un errore del tipo \"L'installazione automatica non è possibile perché YOURLS non può scrivere in …/user/plugins\". In quel caso puoi installare manualmente via SSH — esegui questi comandi all'interno della directory dei plugin:",
       sshAlt:
         "In alternativa, scarica il pacchetto ZIP qui sopra, estrailo in locale e carica la cartella via FTP/SFTP.",
+      awesomeYourls: "Awesome YOURLS",
     },
     about: {
       eyebrow: "About",
@@ -163,8 +174,12 @@ const dicts: Record<Lang, Dict> = {
         ", il celebre URL shortener self-hosted in PHP. Ogni plugin nasce da un problema reale, risolto nel modo più semplice e robusto possibile.",
       p2: "Tutto il codice è open-source, rilasciato sotto licenza MIT e ospitato su GitHub. Aiutato dall'intelligenza artificiale? Sì, ma mai con il pilota automatico, con l'obiettivo di migliorare produttività e qualità del codice. Se questo ti disturba, passa pure oltre, non c'è nulla di cui vergognarsi nell'usare strumenti che ti aiutano a fare un lavoro migliore e più efficiente.",
       p3: "Se uno di questi plugin ti è utile, lascia una stella sul repository o apri una issue con feedback. Le pull request sono sempre benvenute.",
+      p4Pre: "Tutti i plugin di questa collezione sono inclusi anche in ",
+      p4Mid: "Awesome YOURLS",
+      p4Post: ", la lista curata dalla community di plugin, temi e risorse per il progetto.",
       github: "GitHub",
       contact: "Modulo di contatto",
+      awesomeYourls: "Awesome YOURLS",
       contactNote: "Per supporto o domande su uno specifico plugin, apri una Issue direttamente nel suo repository GitHub. In ultima istanza, puoi contattarmi tramite il mio modulo di contatto.",
     },
     footer: {

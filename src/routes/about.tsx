@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Sparkles } from "lucide-react";
 import { GithubIcon } from "@/components/github-icon";
 import { useI18n } from "@/lib/i18n";
 
@@ -54,6 +54,18 @@ function About() {
             </p>
             <p>{t.about.p2}</p>
             <p>{t.about.p3}</p>
+            <p>
+              {t.about.p4Pre}
+              <a
+                href="https://github.com/YOURLS/awesome"
+                target="_blank"
+                rel="noreferrer"
+                className="text-foreground underline decoration-accent/40 hover:decoration-accent"
+              >
+                {t.about.p4Mid}
+              </a>
+              {t.about.p4Post}
+            </p>
           </div>
           <div className="mt-12 space-y-6">
             <div className="flex flex-wrap gap-3">
@@ -65,6 +77,15 @@ function About() {
               >
                 <GithubIcon className="size-4" />
                 {t.about.github}
+              </a>
+              <a
+                href="https://github.com/YOURLS/awesome"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 ring-1 ring-border rounded-lg text-sm font-medium hover:bg-card transition-all"
+              >
+                <Sparkles className="size-4" />
+                {t.about.awesomeYourls}
               </a>
               <a
                 href="https://gioxx.org/about/#giovanni_contattami"
