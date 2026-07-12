@@ -49,4 +49,4 @@ CI/CD is handled automatically via GitHub Actions on every push to `main`.
 
 ## License
 
-MIT — © [Gioxx](https://github.com/gioxx)
+MIT - [Gioxx](https://github.com/gioxx)
