@@ -1,4 +1,4 @@
-# yourls.gioxx.org
+# YOURLS: my plugins and side projects
 
 Source code of [yourls.gioxx.org](https://yourls.gioxx.org) — a personal gallery of open-source plugins and side projects built for [YOURLS](https://yourls.org), the self-hosted PHP URL shortener.
 
