@@ -4,11 +4,21 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Hallmark · macrostructure: Ecosystem Index (home) / Index-First (about, donate) / Workbench (plugin detail)
+ * theme: custom "Aubergine" · vibe: "dark-primary, violet, Linear-clean x Runway/Suno glow"
+ * paper (dark): oklch(14% 0.03 300) · accent: oklch(70% 0.20 305)
+ * display + body: Geist (single-family) · mono: JetBrains Mono
+ * axes: dark / geometric-sans / chromatic-violet-300 · nav: N1b · footer: Ft3
+ * studied: yes · DNA-source: url (https://www.awesomeintune.com/) — search-first hero,
+ * category pills, stat strip, newest rail, Ft3 footer columns (structure only, not tokens/copy)
+ * design-system: design.md · designed-as-app
+ */
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: var(--radius-code);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -30,72 +40,131 @@
   --color-ring: var(--ring);
   --color-surface: var(--surface);
   --color-code-bg: var(--code-bg);
-  --font-sans: var(--font-display);
+  --color-graphite: var(--graphite);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
   --font-mono: var(--font-mono);
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-expo: var(--ease-out);
 }
 
 :root {
-  --radius: 0.75rem;
-  --background: oklch(0.985 0.003 240);
-  --foreground: oklch(0.22 0.03 260);
-  --surface: oklch(1 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.03 260);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.03 260);
-  --primary: oklch(0.22 0.03 260);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.96 0.005 240);
-  --secondary-foreground: oklch(0.22 0.03 260);
-  --muted: oklch(0.96 0.005 240);
-  --muted-foreground: oklch(0.55 0.02 255);
-  --accent: oklch(0.58 0.19 255);
-  --accent-foreground: oklch(1 0 0);
+  --radius: 0.625rem; /* 10px — Linear's band, no pill CTAs this pass */
+  --radius-code: 0.625rem;
+  --background: oklch(0.97 0.01 300);
+  --foreground: oklch(0.2 0.014 300);
+  --surface: oklch(0.99 0.006 300);
+  --card: oklch(0.99 0.006 300);
+  --card-foreground: oklch(0.2 0.014 300);
+  --popover: oklch(0.99 0.006 300);
+  --popover-foreground: oklch(0.2 0.014 300);
+  --primary: oklch(0.2 0.014 300);
+  --primary-foreground: oklch(0.98 0.008 300);
+  --secondary: oklch(0.94 0.012 300);
+  --secondary-foreground: oklch(0.2 0.014 300);
+  --muted: oklch(0.94 0.012 300);
+  --muted-foreground: oklch(0.48 0.012 300);
+  --accent: oklch(0.52 0.19 300);
+  --accent-foreground: oklch(0.98 0.008 300);
   --destructive: oklch(0.6 0.22 25);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.22 0.03 260 / 0.08);
-  --input: oklch(0.22 0.03 260 / 0.12);
-  --ring: oklch(0.58 0.19 255);
-  --code-bg: oklch(0.22 0.04 260);
-  --font-display: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --border: oklch(0.2 0.014 300 / 0.1);
+  --input: oklch(0.2 0.014 300 / 0.14);
+  --ring: oklch(0.54 0.2 300);
+  --code-bg: oklch(0.18 0.026 300);
+  --graphite: oklch(0.18 0.026 300);
+  --font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .dark {
-  --background: oklch(0.16 0.02 260);
-  --foreground: oklch(0.97 0.005 240);
-  --surface: oklch(0.21 0.025 260);
-  --card: oklch(0.21 0.025 260);
-  --card-foreground: oklch(0.97 0.005 240);
-  --popover: oklch(0.21 0.025 260);
-  --popover-foreground: oklch(0.97 0.005 240);
-  --primary: oklch(0.97 0.005 240);
-  --primary-foreground: oklch(0.22 0.03 260);
-  --secondary: oklch(0.27 0.03 260);
-  --secondary-foreground: oklch(0.97 0.005 240);
-  --muted: oklch(0.27 0.03 260);
-  --muted-foreground: oklch(0.7 0.02 255);
-  --accent: oklch(0.65 0.18 255);
-  --accent-foreground: oklch(0.16 0.02 260);
-  --border: oklch(1 0 0 / 0.08);
-  --input: oklch(1 0 0 / 0.12);
-  --ring: oklch(0.65 0.18 255);
-  --code-bg: oklch(0.14 0.02 260);
+  --background: oklch(0.14 0.03 300);
+  --foreground: oklch(0.95 0.01 300);
+  --surface: oklch(0.18 0.032 300);
+  --card: oklch(0.18 0.032 300);
+  --card-foreground: oklch(0.95 0.01 300);
+  --popover: oklch(0.18 0.032 300);
+  --popover-foreground: oklch(0.95 0.01 300);
+  --primary: oklch(0.95 0.01 300);
+  --primary-foreground: oklch(0.14 0.03 300);
+  --secondary: oklch(0.23 0.032 300);
+  --secondary-foreground: oklch(0.95 0.01 300);
+  --muted: oklch(0.23 0.032 300);
+  --muted-foreground: oklch(0.72 0.014 300);
+  --accent: oklch(0.7 0.2 305);
+  --accent-foreground: oklch(0.14 0.03 300);
+  --border: oklch(1 0 0 / 0.09);
+  --input: oklch(1 0 0 / 0.13);
+  --ring: oklch(0.72 0.22 305);
+  --code-bg: oklch(0.16 0.028 300);
+  --graphite: oklch(0.16 0.028 300);
 }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fade-in {
-  animation: fadeInUp 0.6s var(--ease-out-expo) both;
+  animation: revealUp 0.6s var(--ease-out) both;
   animation-play-state: paused;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in {
+    animation-duration: 0.001ms !important;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (scripting: none) {
-  .animate-fade-in { animation: none; opacity: 1; transform: none; }
+  .animate-fade-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Typographic code/terminal frame — no re-drawn window chrome, no traffic-light dots */
+.code-frame {
+  background: var(--color-graphite);
+  border-radius: var(--radius-code);
+  border: 1px solid oklch(1 0 0 / 0.08);
+}
+.code-frame__label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: oklch(1 0 0 / 0.4);
+  border-bottom: 1px solid oklch(1 0 0 / 0.08);
+}
+
+/* Card lift on hover — calm, no rotation, no scale-bounce, no outer glow */
+.card-lift {
+  transition:
+    transform 220ms var(--ease-out),
+    border-color 220ms var(--ease-out);
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+}
+
+.icon-badge {
+  transition: transform 220ms var(--ease-out);
+}
+.card-lift:hover .icon-badge {
+  transform: scale(1.06);
 }
 
 @layer base {
@@ -104,13 +173,22 @@
   }
 
   html {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    overflow-x: clip;
     font-feature-settings: "cv02", "cv03", "cv11", "ss01";
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
   }
 }

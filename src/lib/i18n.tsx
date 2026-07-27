@@ -15,6 +15,8 @@ type Dict = {
     explore: string;
     collateralTitle: string;
     collateralSubtitle: string;
+    statPlugins: string;
+    statCategories: string;
   };
   card: { explore: string };
   detail: {
@@ -62,7 +64,13 @@ type Dict = {
 
 const dicts: Record<Lang, Dict> = {
   en: {
-    nav: { plugins: "Plugins", about: "About", collateral: "Tools", github: "GitHub", blog: "Blog" },
+    nav: {
+      plugins: "Plugins",
+      about: "About",
+      collateral: "Tools",
+      github: "GitHub",
+      blog: "Blog",
+    },
     badge: { stableSuffix: "stable" },
     home: {
       eyebrow: "Plugin Suite for YOURLS",
@@ -74,6 +82,8 @@ const dicts: Record<Lang, Dict> = {
       explore: "Explore details",
       collateralTitle: "Side projects",
       collateralSubtitle: "Utilities and tooling around the YOURLS ecosystem.",
+      statPlugins: "plugins",
+      statCategories: "categories",
     },
     card: { explore: "Explore details" },
     detail: {
@@ -95,7 +105,7 @@ const dicts: Record<Lang, Dict> = {
       errorTitle: "Error",
       sshTitle: "Can't install via Plugin Manager?",
       sshIntro:
-        'If YOURLS doesn\'t have write permissions on the plugins directory, Plugin Manager will show an error like “Automatic installation is not possible because YOURLS cannot write to …/user/plugins”. In that case you can install manually over SSH — run these commands inside your plugins directory:',
+        "If YOURLS doesn't have write permissions on the plugins directory, Plugin Manager will show an error like “Automatic installation is not possible because YOURLS cannot write to …/user/plugins”. In that case you can install manually over SSH — run these commands inside your plugins directory:",
       sshAlt:
         "Alternatively, download the ZIP above, extract it locally and upload the folder via FTP/SFTP.",
       awesomeYourls: "Awesome YOURLS",
@@ -115,7 +125,8 @@ const dicts: Record<Lang, Dict> = {
       github: "GitHub",
       contact: "Contact form",
       awesomeYourls: "Awesome YOURLS",
-      contactNote: "For support or questions about a specific plugin, open an issue directly on its GitHub repository. As a last resort, you can reach me via my contact form.",
+      contactNote:
+        "For support or questions about a specific plugin, open an issue directly on its GitHub repository. As a last resort, you can reach me via my contact form.",
     },
     footer: {
       tagline: "❤️ Lovingly developed by the usually-on-vacation brain cell of Gioxx.",
@@ -127,7 +138,13 @@ const dicts: Record<Lang, Dict> = {
     language: { label: "Language" },
   },
   it: {
-    nav: { plugins: "Plugin", about: "About", collateral: "Strumenti", github: "GitHub", blog: "Blog" },
+    nav: {
+      plugins: "Plugin",
+      about: "About",
+      collateral: "Strumenti",
+      github: "GitHub",
+      blog: "Blog",
+    },
     badge: { stableSuffix: "stabile" },
     home: {
       eyebrow: "Suite di plugin per YOURLS",
@@ -139,6 +156,8 @@ const dicts: Record<Lang, Dict> = {
       explore: "Esplora dettagli",
       collateralTitle: "Progetti collaterali",
       collateralSubtitle: "Utilità e strumenti attorno all'ecosistema YOURLS.",
+      statPlugins: "plugin",
+      statCategories: "categorie",
     },
     card: { explore: "Esplora dettagli" },
     detail: {
@@ -168,7 +187,8 @@ const dicts: Record<Lang, Dict> = {
     about: {
       eyebrow: "About",
       title: "Plugin pensati come strumenti, non come prodotti.",
-      p1Pre: "gioxx/YOURLS è la mia galleria personale di plugin e progetti collaterali sviluppati per ",
+      p1Pre:
+        "gioxx/YOURLS è la mia galleria personale di plugin e progetti collaterali sviluppati per ",
       p1Mid: "YOURLS",
       p1Post:
         ", il celebre URL shortener self-hosted in PHP. Ogni plugin nasce da un problema reale, risolto nel modo più semplice e robusto possibile.",
@@ -180,10 +200,12 @@ const dicts: Record<Lang, Dict> = {
       github: "GitHub",
       contact: "Modulo di contatto",
       awesomeYourls: "Awesome YOURLS",
-      contactNote: "Per supporto o domande su uno specifico plugin, apri una Issue direttamente nel suo repository GitHub. In ultima istanza, puoi contattarmi tramite il mio modulo di contatto.",
+      contactNote:
+        "Per supporto o domande su uno specifico plugin, apri una Issue direttamente nel suo repository GitHub. In ultima istanza, puoi contattarmi tramite il mio modulo di contatto.",
     },
     footer: {
-      tagline: "❤️ Sviluppato con amore dall’unico neurone funzionante di Gioxx (quando non è in vacanza).",
+      tagline:
+        "❤️ Sviluppato con amore dall’unico neurone funzionante di Gioxx (quando non è in vacanza).",
       support: "Sostieni",
       disclaimer:
         "Tutti i marchi citati appartengono ai legittimi proprietari; marchi di terzi, nomi di prodotti, nomi commerciali, nomi corporativi e società citati possono essere marchi di proprietà dei rispettivi titolari o marchi registrati d'altre società e sono stati utilizzati a puro scopo esplicativo ed a beneficio del possessore, senza alcun fine di violazione dei diritti di Copyright vigenti.",
@@ -237,7 +259,7 @@ export function LanguageToggle() {
       onClick={() => setLang(next)}
       aria-label={`${t.language.label}: ${lang.toUpperCase()} (switch to ${next.toUpperCase()})`}
       title={`${t.language.label}: ${lang.toUpperCase()}`}
-      className="h-8 px-2 grid place-items-center rounded-lg ring-1 ring-border hover:bg-foreground/5 transition-colors font-mono text-[10px] uppercase tracking-wider text-muted-foreground hover:text-foreground"
+      className="h-8 px-2.5 grid place-items-center rounded-full ring-1 ring-border hover:ring-accent/50 transition-colors font-mono text-[10px] uppercase tracking-wider text-muted-foreground hover:text-accent"
     >
       {lang}
     </button>
