@@ -63,13 +63,13 @@
   --secondary-foreground: oklch(0.2 0.014 300);
   --muted: oklch(0.94 0.012 300);
   --muted-foreground: oklch(0.48 0.012 300);
-  --accent: oklch(0.52 0.19 300);
+  --accent: oklch(0.48 0.25 300);
   --accent-foreground: oklch(0.98 0.008 300);
   --destructive: oklch(0.6 0.22 25);
   --destructive-foreground: oklch(1 0 0);
   --border: oklch(0.2 0.014 300 / 0.1);
   --input: oklch(0.2 0.014 300 / 0.14);
-  --ring: oklch(0.54 0.2 300);
+  --ring: oklch(0.5 0.25 300);
   --code-bg: oklch(0.18 0.026 300);
   --graphite: oklch(0.18 0.026 300);
   --font-display: "Geist", ui-sans-serif, system-ui, sans-serif;

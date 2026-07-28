@@ -108,7 +108,7 @@ export function SiteFooter() {
           </div>
           <div>
             <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-3">
-              Project
+              {t.footer.about}
             </p>
             <ul className="space-y-2 text-sm">
               <li>
@@ -141,7 +141,7 @@ export function SiteFooter() {
           </div>
           <div>
             <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-3">
-              {t.nav.collateral}
+              {t.footer.community}
             </p>
             <ul className="space-y-2 text-sm">
               <li>
