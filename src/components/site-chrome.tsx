@@ -17,34 +17,37 @@ export function SiteNav() {
   return (
     <nav className="sticky top-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-        <Link
-          to="/"
-          className="flex items-center gap-2 font-display font-semibold tracking-tight text-[15px] shrink-0"
-        >
-          <PluginMark className="size-5 text-accent shrink-0" />
-          gioxx/YOURLS
-        </Link>
-        <div className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
-          <Link to="/" hash="plugins" className="hover:text-foreground transition-colors">
-            {t.nav.plugins}
-          </Link>
-          <Link to="/" hash="collateral" className="hover:text-foreground transition-colors">
-            {t.nav.collateral}
-          </Link>
-          <Link to="/about" className="hover:text-foreground transition-colors">
-            {t.nav.about}
-          </Link>
-          <Link to="/donate" className="hover:text-foreground transition-colors">
-            {t.footer.support}
-          </Link>
-          <a
-            href="https://gioxx.org/tag/yourls/"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-foreground transition-colors"
+        <div className="flex items-center gap-6 min-w-0">
+          <Link
+            to="/"
+            className="flex items-center gap-2 font-display font-semibold tracking-tight text-[15px] shrink-0"
           >
-            {t.nav.blog}
-          </a>
+            <PluginMark className="size-5 text-accent shrink-0" />
+            gioxx/YOURLS
+          </Link>
+          <div className="hidden md:block w-px h-5 bg-border shrink-0" aria-hidden="true" />
+          <div className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
+            <Link to="/" hash="plugins" className="hover:text-foreground transition-colors">
+              {t.nav.plugins}
+            </Link>
+            <Link to="/" hash="collateral" className="hover:text-foreground transition-colors">
+              {t.nav.collateral}
+            </Link>
+            <Link to="/about" className="hover:text-foreground transition-colors">
+              {t.nav.about}
+            </Link>
+            <Link to="/donate" className="hover:text-foreground transition-colors">
+              {t.footer.support}
+            </Link>
+            <a
+              href="https://gioxx.org/tag/yourls/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-foreground transition-colors"
+            >
+              {t.nav.blog}
+            </a>
+          </div>
         </div>
         <div className="flex items-center gap-2 shrink-0">
           <LanguageToggle />
