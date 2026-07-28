@@ -4,14 +4,7 @@ import { ThemeToggle } from "@/lib/theme";
 import { LanguageToggle, useI18n } from "@/lib/i18n";
 import { plugins } from "@/data/plugins";
 import { siteConfig } from "@/config/site";
-
-function PluginMark({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 36 36" fill="currentColor" className={className} aria-hidden="true">
-      <path d="M29.81,16H29V8.83a2,2,0,0,0-2-2H21A5.14,5.14,0,0,0,16.51,2,5,5,0,0,0,11,6.83H4a2,2,0,0,0-2,2V17H4.81A3.13,3.13,0,0,1,8,19.69,3,3,0,0,1,7.22,22,3,3,0,0,1,5,23H2v8.83a2,2,0,0,0,2,2H27a2,2,0,0,0,2-2V26h1a5,5,0,0,0,5-5.51A5.15,5.15,0,0,0,29.81,16Zm2.41,7A3,3,0,0,1,30,24H27v7.83H4V25H5a5,5,0,0,0,5-5.51A5.15,5.15,0,0,0,4.81,15H4V8.83h9V7a3,3,0,0,1,1-2.22A3,3,0,0,1,16.31,4,3.13,3.13,0,0,1,19,7.19V8.83h8V18h2.81A3.13,3.13,0,0,1,33,20.69,3,3,0,0,1,32.22,23Z" />
-    </svg>
-  );
-}
+import { LinkMark } from "@/components/link-mark";
 
 export function SiteNav() {
   const { t } = useI18n();
@@ -23,7 +16,7 @@ export function SiteNav() {
             to="/"
             className="flex items-center gap-2 font-display font-semibold tracking-tight text-[15px] shrink-0"
           >
-            <PluginMark className="size-5 text-accent shrink-0" />
+            <LinkMark className="size-5 text-accent shrink-0" />
             {siteConfig.name}
           </Link>
           <div className="hidden md:block w-px h-5 bg-border shrink-0" aria-hidden="true" />
