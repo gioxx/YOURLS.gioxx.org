@@ -3,6 +3,7 @@ import { GithubIcon } from "@/components/github-icon";
 import { ThemeToggle } from "@/lib/theme";
 import { LanguageToggle, useI18n } from "@/lib/i18n";
 import { plugins } from "@/data/plugins";
+import { siteConfig } from "@/config/site";
 
 function PluginMark({ className }: { className?: string }) {
   return (
@@ -23,7 +24,7 @@ export function SiteNav() {
             className="flex items-center gap-2 font-display font-semibold tracking-tight text-[15px] shrink-0"
           >
             <PluginMark className="size-5 text-accent shrink-0" />
-            gioxx/YOURLS
+            {siteConfig.name}
           </Link>
           <div className="hidden md:block w-px h-5 bg-border shrink-0" aria-hidden="true" />
           <div className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
@@ -40,7 +41,7 @@ export function SiteNav() {
               {t.footer.support}
             </Link>
             <a
-              href="https://gioxx.org/tag/yourls/"
+              href={siteConfig.blogUrl}
               target="_blank"
               rel="noreferrer"
               className="hover:text-foreground transition-colors"
@@ -53,7 +54,7 @@ export function SiteNav() {
           <LanguageToggle />
           <ThemeToggle />
           <a
-            href="https://github.com/gioxx"
+            href={siteConfig.githubUserUrl}
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
@@ -79,7 +80,7 @@ export function SiteFooter() {
               to="/"
               className="font-display font-semibold tracking-tight text-lg mb-1.5 inline-block"
             >
-              gioxx/YOURLS
+              {siteConfig.name}
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">{t.footer.tagline}</p>
           </div>
@@ -129,7 +130,7 @@ export function SiteFooter() {
               </li>
               <li>
                 <a
-                  href="https://github.com/gioxx"
+                  href={siteConfig.githubUserUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="text-muted-foreground hover:text-foreground transition-colors"
@@ -146,27 +147,27 @@ export function SiteFooter() {
             <ul className="space-y-2 text-sm">
               <li>
                 <a
-                  href="https://github.com/YOURLS/awesome"
+                  href={siteConfig.awesomeList.url}
                   target="_blank"
                   rel="noreferrer"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  Awesome YOURLS
+                  {siteConfig.awesomeList.label}
                 </a>
               </li>
               <li>
                 <a
-                  href="https://yourls.org"
+                  href={siteConfig.product.homeUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  Download YOURLS
+                  Download {siteConfig.product.name}
                 </a>
               </li>
               <li>
                 <a
-                  href="https://gioxx.org/tag/yourls/"
+                  href={siteConfig.blogUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="text-muted-foreground hover:text-foreground transition-colors"
@@ -179,7 +180,7 @@ export function SiteFooter() {
         </div>
         <div className="border-t border-border pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-            © {new Date().getFullYear()} Gioxx
+            © {new Date().getFullYear()} {siteConfig.author}
           </p>
           <p className="text-[10px] leading-relaxed text-muted-foreground/70 max-w-2xl">
             {t.footer.disclaimer}

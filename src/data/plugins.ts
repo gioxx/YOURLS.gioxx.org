@@ -8,6 +8,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import type { Lang } from "@/lib/i18n";
+import { siteConfig } from "@/config/site";
 
 export type Localized<T> = Record<Lang, T>;
 
@@ -30,10 +31,9 @@ export type Plugin = {
   featured?: boolean;
 };
 
-const GH_USER = "gioxx";
-const repo = (name: string) => `https://github.com/${GH_USER}/${name}`;
+const repo = (name: string) => `https://github.com/${siteConfig.githubUser}/${name}`;
 const dl = (name: string) =>
-  `https://github.com/${GH_USER}/${name}/archive/refs/heads/main.zip`;
+  `https://github.com/${siteConfig.githubUser}/${name}/archive/refs/heads/main.zip`;
 
 export const plugins: Plugin[] = [
   // Plugin Manager — in evidenza, mostrato sempre per primo

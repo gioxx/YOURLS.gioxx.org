@@ -2,16 +2,17 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ExternalLink, Heart, Coffee } from "lucide-react";
 import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { useI18n } from "@/lib/i18n";
+import { siteConfig } from "@/config/site";
 
 export const Route = createFileRoute("/donate")({
   head: () => ({
     meta: [
-      { title: "Donate — gioxx/YOURLS" },
+      { title: `Donate — ${siteConfig.name}` },
       {
         name: "description",
-        content: "Support the development of gioxx/YOURLS plugins.",
+        content: `Support the development of ${siteConfig.name} plugins.`,
       },
-      { property: "og:title", content: "Donate — gioxx/YOURLS" },
+      { property: "og:title", content: `Donate — ${siteConfig.name}` },
     ],
   }),
   component: Donate,
@@ -22,7 +23,7 @@ const methods = [
     id: "github",
     icon: Heart,
     name: "GitHub Sponsors",
-    url: "https://github.com/sponsors/gioxx",
+    url: siteConfig.donate.githubSponsors,
     descEn:
       "The most direct way to support via GitHub. Recurring or one-time sponsorship, with full visibility on the platform where all the code lives.",
     descIt:
@@ -35,7 +36,7 @@ const methods = [
     id: "kofi",
     icon: Coffee,
     name: "Ko-fi",
-    url: "https://ko-fi.com/gioxx",
+    url: siteConfig.donate.kofi,
     descEn:
       "Buy me a coffee (literally). Ko-fi is simple, no subscriptions required, just a one-time contribution if something I built saved you time.",
     descIt:
@@ -48,7 +49,7 @@ const methods = [
     id: "bmc",
     icon: Coffee,
     name: "Buy Me a Coffee",
-    url: "https://www.buymeacoffee.com/gioxx",
+    url: siteConfig.donate.buyMeACoffee,
     descEn:
       "Another simple way to say thanks. Same idea as Ko-fi — if a plugin solved a real problem for you, a coffee is always appreciated.",
     descIt:

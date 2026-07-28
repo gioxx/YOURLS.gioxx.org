@@ -3,20 +3,20 @@ import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { ExternalLink, Sparkles } from "lucide-react";
 import { GithubIcon } from "@/components/github-icon";
 import { useI18n } from "@/lib/i18n";
+import { siteConfig } from "@/config/site";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — gioxx/YOURLS" },
+      { title: `About — ${siteConfig.name}` },
       {
         name: "description",
-        content:
-          "The developer behind the YOURLS plugin collection: philosophy, contributions and contact.",
+        content: `The developer behind the ${siteConfig.product.name} plugin collection: philosophy, contributions and contact.`,
       },
-      { property: "og:title", content: "About — gioxx/YOURLS" },
+      { property: "og:title", content: `About — ${siteConfig.name}` },
       {
         property: "og:description",
-        content: "The developer behind the YOURLS plugin collection.",
+        content: `The developer behind the ${siteConfig.product.name} plugin collection.`,
       },
     ],
   }),
@@ -26,10 +26,10 @@ export const Route = createFileRoute("/about")({
 function About() {
   const { t } = useI18n();
   const links = [
-    { href: "https://github.com/gioxx", label: t.about.github, icon: GithubIcon },
-    { href: "https://github.com/YOURLS/awesome", label: t.about.awesomeYourls, icon: Sparkles },
+    { href: siteConfig.githubUserUrl, label: t.about.github, icon: GithubIcon },
+    { href: siteConfig.awesomeList.url, label: t.about.awesomeYourls, icon: Sparkles },
     {
-      href: "https://gioxx.org/about/#giovanni_contattami",
+      href: siteConfig.contactUrl,
       label: t.about.contact,
       icon: ExternalLink,
     },
@@ -49,7 +49,7 @@ function About() {
             <p>
               {t.about.p1Pre}
               <a
-                href="https://yourls.org"
+                href={siteConfig.product.homeUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="text-foreground underline decoration-accent/40 hover:decoration-accent"
@@ -63,7 +63,7 @@ function About() {
             <p>
               {t.about.p4Pre}
               <a
-                href="https://github.com/YOURLS/awesome"
+                href={siteConfig.awesomeList.url}
                 target="_blank"
                 rel="noreferrer"
                 className="text-foreground underline decoration-accent/40 hover:decoration-accent"

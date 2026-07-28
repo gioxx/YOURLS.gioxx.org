@@ -16,6 +16,7 @@ import { SiteNav, SiteFooter } from "@/components/site-chrome";
 import { getPlugin, plugins } from "@/data/plugins";
 import { getRepoStats } from "@/lib/github.functions";
 import { useI18n } from "@/lib/i18n";
+import { siteConfig } from "@/config/site";
 
 export const Route = createFileRoute("/plugins/$slug")({
   loader: async ({ params }) => {
@@ -34,9 +35,9 @@ export const Route = createFileRoute("/plugins/$slug")({
     const tagline = plugin.tagline.en;
     return {
       meta: [
-        { title: `${plugin.name} — YOURLS Plugin` },
+        { title: `${plugin.name} — ${siteConfig.product.name} Plugin` },
         { name: "description", content: tagline },
-        { property: "og:title", content: `${plugin.name} — YOURLS Plugin` },
+        { property: "og:title", content: `${plugin.name} — ${siteConfig.product.name} Plugin` },
         { property: "og:description", content: tagline },
       ],
     };
@@ -94,7 +95,7 @@ function PluginDetail() {
     `wget -O ${zipName} "${downloadUrl}"`,
     `unzip ${zipName}`,
     `rm -rf ${repoName}/`,
-    `mv gioxx-${repoName}-*/ ${repoName}/`,
+    `mv ${siteConfig.githubUser}-${repoName}-*/ ${repoName}/`,
     `rm ${zipName}`,
   ];
   const publishedAt = stats?.publishedAt
@@ -161,7 +162,7 @@ function PluginDetail() {
                 </span>
               )}
               <a
-                href="https://github.com/YOURLS/awesome"
+                href={siteConfig.awesomeList.url}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded uppercase text-accent border border-accent/20 hover:border-accent/40 transition-colors"
