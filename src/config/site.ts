@@ -8,6 +8,7 @@ export const siteConfig = {
   author: "Gioxx",
   githubUser: "gioxx",
   githubUserUrl: "https://github.com/gioxx",
+  siteRepoUrl: "https://github.com/gioxx/YOURLS.gioxx.org",
   blogUrl: "https://gioxx.org/tag/yourls/",
   contactUrl: "https://gioxx.org/about/#giovanni_contattami",
   reposSearchUrl: "https://github.com/gioxx?tab=repositories&q=YOURLS-&type=&language=&sort=",
