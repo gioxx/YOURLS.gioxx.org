@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as DonateRouteImport } from './routes/donate'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as PluginsIndexRouteImport } from './routes/plugins.index'
 import { Route as PluginsSlugRouteImport } from './routes/plugins.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -35,6 +36,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PluginsIndexRoute = PluginsIndexRouteImport.update({
+  id: '/plugins/',
+  path: '/plugins/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PluginsSlugRoute = PluginsSlugRouteImport.update({
   id: '/plugins/$slug',
   path: '/plugins/$slug',
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/donate': typeof DonateRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/plugins/$slug': typeof PluginsSlugRoute
+  '/plugins/': typeof PluginsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/donate': typeof DonateRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/plugins/$slug': typeof PluginsSlugRoute
+  '/plugins': typeof PluginsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,14 +70,23 @@ export interface FileRoutesById {
   '/donate': typeof DonateRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/plugins/$slug': typeof PluginsSlugRoute
+  '/plugins/': typeof PluginsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/donate' | '/sitemap.xml' | '/plugins/$slug'
+  fullPaths:
+    '/' | '/about' | '/donate' | '/sitemap.xml' | '/plugins/$slug' | '/plugins/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/donate' | '/sitemap.xml' | '/plugins/$slug'
+  to:
+    '/' | '/about' | '/donate' | '/sitemap.xml' | '/plugins/$slug' | '/plugins'
   id:
-    '__root__' | '/' | '/about' | '/donate' | '/sitemap.xml' | '/plugins/$slug'
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/donate'
+    | '/sitemap.xml'
+    | '/plugins/$slug'
+    | '/plugins/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -78,6 +95,7 @@ export interface RootRouteChildren {
   DonateRoute: typeof DonateRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   PluginsSlugRoute: typeof PluginsSlugRoute
+  PluginsIndexRoute: typeof PluginsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -110,6 +128,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/plugins/': {
+      id: '/plugins/'
+      path: '/plugins'
+      fullPath: '/plugins/'
+      preLoaderRoute: typeof PluginsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/plugins/$slug': {
       id: '/plugins/$slug'
       path: '/plugins/$slug'
@@ -126,6 +151,7 @@ const rootRouteChildren: RootRouteChildren = {
   DonateRoute: DonateRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   PluginsSlugRoute: PluginsSlugRoute,
+  PluginsIndexRoute: PluginsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
