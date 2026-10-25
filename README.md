@@ -45,7 +45,7 @@ bun run build          # outputs to dist/
 bunx wrangler deploy --config dist/server/wrangler.json
 ```
 
-CI/CD is handled automatically via GitHub Actions on every push to `main`.
+Cloudflare Workers Builds deploys automatically on every push to `main`.
 
 ## License
 
