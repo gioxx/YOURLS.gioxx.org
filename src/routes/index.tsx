@@ -10,6 +10,10 @@ import { siteConfig } from "@/config/site";
 import { collateralItems } from "@/data/collateral";
 import { BRAND_MARK_OUTLINE_VIEWBOX, BRAND_MARK_PATH } from "@/components/brand-mark";
 
+/** Lengths (out of 100) of the stacked strokes that draw the hero snake. */
+const HERO_SNAKE_LENGTH = 30;
+const HERO_SNAKE_LAYERS = Array.from({ length: 20 }, (_, i) => ((i + 1) * HERO_SNAKE_LENGTH) / 20);
+
 export const Route = createFileRoute("/")({
   loader: () => getAllRepoStats(),
   head: () => ({
@@ -69,10 +73,34 @@ function Index() {
           <svg
             viewBox={BRAND_MARK_OUTLINE_VIEWBOX}
             fill="none"
-            className="hidden md:block absolute right-12 lg:right-20 top-1/2 -translate-y-1/2 h-48 lg:h-56 w-auto text-accent opacity-40 dark:opacity-25 pointer-events-none z-0"
+            className="hidden md:block absolute right-12 lg:right-20 top-1/2 -translate-y-1/2 h-48 lg:h-56 w-auto text-accent pointer-events-none z-0"
             aria-hidden="true"
           >
-            <path fill="none" stroke="currentColor" strokeWidth={5} strokeLinejoin="round" d={BRAND_MARK_PATH} />
+            <path
+              className="opacity-40 dark:opacity-25"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={5}
+              strokeLinejoin="round"
+              d={BRAND_MARK_PATH}
+            />
+            {/* A snake of light runs along the outline: stacked strokes of growing
+                length (each led by a gap, so all end at the same head) make it
+                brightest in front and fade towards the tail. Hidden when motion
+                is reduced. */}
+            {HERO_SNAKE_LAYERS.map((length) => (
+              <path
+                key={length}
+                className="hero-snake"
+                pathLength={100}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={5}
+                strokeLinejoin="round"
+                strokeDasharray={`0 ${HERO_SNAKE_LENGTH - length} ${length} ${100 - HERO_SNAKE_LENGTH}`}
+                d={BRAND_MARK_PATH}
+              />
+            ))}
           </svg>
         </section>
 
