@@ -6,7 +6,7 @@
   "main": "src/server.ts",
   "routes": [
     {
-      "pattern": "yourls.gioxx.org",
+      "pattern": "yourls.gxware.org",
       "custom_domain": true
     }
   ]
